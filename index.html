@@ -1,0 +1,324 @@
+<!--Notes:
+1. Timeline could have the boxes aqppear out of pictures on the timeline (that replace the dots)
+2. Certifications should be columned out by company with logo pictures for each company
+3. auto adjust expand boxes to first position after done.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Professional yet fun resume website" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Resume - Career</title>
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html" class="active">Career</a></li>
+      <li><a href="personal.html">Personal Pursuits</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+<header class="hero">
+  <div class="hero-overlay"></div> <!-- Darkened overlay for better text contrast -->
+  
+  <div class="hero-content">
+    <h1>Shane Haynes</h1>
+    <p class="hero-subtitle">Strategic Thinker | Data Enthusiast | Problem Solver</p>
+
+    <p class="hero-description">
+      Passionate about **bridging technology and decision-making**, I specialize in 
+      **data-driven strategy, system integrations, and automation**. With a foundation in 
+      **quantitative analysis and philosophy**, I approach every challenge with **precision and creativity**.
+      Currently working as an **Integrations Engineer** at **Eide Bailly**.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#timeline" class="btn-primary">View My Work</a>
+      <a href="resume.pdf" class="btn-secondary">Download Resume</a>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Introduce a quick description on intro section. something like "passionate about solving complex problems and continous learning"-->
+
+  <!-- Timeline Section -->
+  <section class="timeline-section">
+    <h2>My Career Timeline</h2>
+
+    <!-- Timeline Container -->
+    <div class="timeline">
+
+      <!-- 1. Begin College -->
+      <div class="timeline-item">
+        <span class="marker"></span>
+        <div class="timeline-content">
+          <div class="title-container">
+            <img src="U-logo.jpg" alt="University of Utah Logo" />
+            <h3>Enroll at University of Utah</h3>
+          </div>
+          <p class="short-desc">August 2020</p>
+          <p class="details">
+            After graduating high school with the highest honors, I enrolled at the University of Utah 
+            with a Presidential Scholarship. Unsure where my intellectual passions lie, I began taking 
+            courses in a variety of programs. 
+          </p>
+        </div>
+      </div>
+
+      <!-- 2. Maverik Internship -->
+      <div class="timeline-item">
+        <span class="marker"></span>
+        <div class="timeline-content">
+          <div class="title-container">
+            <img src="Maverik.webp" alt="Maverik Gas Station" />
+            <h3>Data Science Internship - Maverik</h3>
+          </div>
+          <p class="short-desc">May 2021 - August 2021</p>
+          <p class="details">
+            Created models that predicted the variation in retail store product sales from forecasted weather. 
+            Crafted analytical approach that started with rudimentary analysis in MS Excel and concluded with model 
+            generation using MS Azure's machine learning services. Utilized MS SQL Server Management Studio to 
+            clean and extract data. Presented findings to senior management including the CEO.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3. Junior Year -->
+      <div class="timeline-item">
+        <span class="marker"></span>
+        <div class="timeline-content">
+          <div class="title-container">
+            <img src="goffslc_logo.jpeg" alt="Goff Strategic Leadership Center Logo" />
+            <h3>Teaching Assistant - Goff Strategic Leadership Center</h3>
+          </div>
+          <p class="short-desc">January 2023- December 2023</p>
+          <p class="details">
+            Coached students to develop strategic leadership skills by helping them complete various projects including:
+            <ul>
+              <li>Market analysis and market entry strategy for a novel smoke forecasting application</li>
+              <li>CVA for innovative computer chip wafers</li>
+              <li>Donor acquisition strategy for a women's health non-profit</li>
+              <li>Plan towards sustainability for a university-wide contraceptive initiative.</li>
+            </ul>
+            Was awarded the Strategic Leader Certification for demonstrated excellence in my work.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4. Senior Year -->
+      <div class="timeline-item">
+        <span class="marker"></span>
+        <div class="timeline-content">
+          <div class="title-container">
+            <img src="EideBailly Logo.png" alt="Eide Bailly Logo" />
+            <h3>Technology Solutions Future Consultant - Eide Bailly</h3>
+          </div>
+          <p class="short-desc">May 2023 - January 2024</p>
+          <p class="details">
+            Learned a variety of technical skills and gained a plethora of certifications while working on 
+            client projects.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5. Graduation -->
+      <div class="timeline-item">
+        <span class="marker"></span>
+        <div class="timeline-content">
+          <div class="title-container">
+            <img src="MeGradPhoto.jpeg" alt="Shane Haynes Graduation Photo" />
+            <h3>Graduation</h3>
+          </div>
+          <p class="short-desc">May 2024</p>
+          <p class="details">
+            Graduated from the University of Utah with two degrees: 1. Quantitative Analysis of Markets 
+            and Organizations 2. Philosophy of Science. These degrees conferred knowledge in microeconomics, machine learning, 
+            econometrics, game theory, argumentation, professional writing, and public speaking. I continue to be involved in the 
+            Goff Strategic Leadership Center as a Guest Speaker and Alumni Coordinator. 
+          </p>
+        </div>
+      </div>
+
+      <!-- 6. Eide Bailly Integrations Developer-->
+      <div class="timeline-item">
+        <span class="marker"></span>
+        <div class="timeline-content">
+          <div class="title-container">
+            <img src="EideBailly Logo.png" alt="Eide Bailly Logo" />
+            <h3>Integrations Developer - Eide Bailly</h3>
+          </div>
+          <p class="short-desc">Jan 2024 - Present</p>
+          <p class="details">
+            As a developer in the Intelligent Automation and System Integration team, I design and implement software solutions that
+            automate business workflows and integrate disparate systems. This work frequently involves developing custom interfaces, 
+            data pipelines, and automation routines. 
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<!-- Certifications Section -->
+<section class="certifications-section">
+  <h2>Technical Certifications</h2>
+  <div class="certifications-columns">
+    
+    <!-- Microsoft Certifications -->
+    <div class="certification-item">
+      <div class="cert-header">
+        <h3></h3>
+        <img src="AWSLogo.png" alt="AWS Logo">
+      </div>
+      <ul>
+        <li>Solutions Architect - Associate</li>
+        <li>Cloud Practioner</li>
+      </ul>
+    </div>
+
+    <!-- Google Certifications -->
+    <div class="certification-item">
+      <div class="cert-header">
+        <h3></h3>
+        <img src="BoomiLogo.jpg" alt="Boomi Logo">
+      </div>
+      <ul>
+        <li>Associate Adminstrator</li>
+        <li>Associate EDI for X12 Developer</li>
+        <li>Associate Integrations Developer</li>
+      </ul>
+    </div>
+
+    <!-- AWS Certifications -->
+    <div class="certification-item">
+      <div class="cert-header">
+        <h3></h3>
+        <img src="MicrosoftLogo.png" alt="Microsoft Azure Logo">
+      </div>
+      <ul>
+        <li>Azure Fundamentals</li>
+        <li>Security, Compliance, and Indentity Fundamentals</li>
+        <li>Microsoft 365 Fundamentals</li>
+      </ul>
+    </div>
+
+    <!-- NetSuite Certifications -->
+    <div class="certification-item">
+      <div class="cert-header">
+        <h3></h3>
+        <img src="WorkatoLogo.png" alt="Workato Logo">
+      </div>
+      <ul>
+        <li>Automation Pro III</li>
+        <li>Automation League Implementation Specialist</li>
+        <li>Automation League Automation Expert</li>
+      </ul>
+    </div>
+
+    <!-- Eide Bailly Certifications -->
+    <div class="certification-item">
+      <div class="cert-header">
+        <h3>Eide Bailly</h3>
+        <img src="eide-bailly-logo.png" alt="Eide Bailly Logo">
+      </div>
+      <ul>
+        <li>Strategic Leader Certification</li>
+        <li>Internal Technology Training & Development</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Professional Work Completed Section -->
+  <section class="work-completed-section">
+    <h2>Professional Work Completed</h2>
+    <ul class="work-list">
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+    </ul>
+  </section>
+
+  <!-- Presentations Section -->
+  <section class="presentations-section">
+    <h2>Speaking and Presentation Engagements</h2>
+    <ul class="presentations-list">
+      <li><strong>Presentation: </strong><i>On Leadership: A Philosophical Analysis on Management Structure</i><br>
+        @ Goff Strategic Leadership Institute</li>
+      <li><strong>Speaking: </strong><i>Guest Speaker for Career Q&A</i><br>
+        @ Goff Strategic Leadership Institute</li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      Connect with me on 
+      <a href="https://www.linkedin.com/in/shane-haynes" 
+         target="_blank" rel="noopener noreferrer">
+        LinkedIn
+      </a>
+    </p>
+  </footer>
+
+<script>
+  // Select all timeline content boxes
+  const timelineContents = document.querySelectorAll('.timeline-content');
+
+  // Add an event listener to reset scroll position when the box shrinks
+  timelineContents.forEach((box) => {
+    box.addEventListener('mouseleave', () => {
+      if (box.scrollHeight > box.offsetHeight) {
+        box.scrollTop = 0; // Reset scroll position to the top
+      }
+    });
+  });
+</script>
+
+<script>
+  // Function for typing effect
+  function typeEffect(element, text, speed, callback) {
+    let i = 0;
+    function typing() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, speed);
+      } else if (callback) {
+        setTimeout(callback, 500); // Small delay before starting the next typing effect
+      }
+    }
+    typing();
+  }
+
+  // When the page loads, start the typing effect
+  document.addEventListener("DOMContentLoaded", function () {
+    const subtitle = document.querySelector(".hero-subtitle");
+    const description = document.querySelector(".hero-description");
+
+    // Clear existing text
+    subtitle.innerHTML = "";
+    description.innerHTML = "";
+
+    // Start typing effect for subtitle first, then for description
+    typeEffect(subtitle, "Strategic Thinker | Data Enthusiast | Problem Solver", 50, function () {
+      typeEffect(description, 
+        "Passionate about bridging technology and decision-making, I specialize in data-driven strategy, system integrations, and automation. Currently working as an Integrations Engineer at Eide Bailly.", 
+        35
+      );
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,684 @@
+/* ------------ GLOBAL RESET AND BASE STYLES ------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f7f7f7;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* ------------ NAVIGATION BAR ------------ */
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  color: #00bfff;
+}
+
+/* ------------ HERO SECTION ------------ */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Nearly full screen */
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url('TitcombBasin.jpeg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+}
+
+/* Dark overlay for contrast */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Subtle overlay */
+}
+
+/* Main hero content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 20px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #00bfff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #009acd;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: #333;
+}
+
+.hero-subtitle, .hero-description {
+  white-space: pre-wrap; /* Ensures proper text wrapping */
+  overflow: hidden; /* Prevents overflow before text is fully typed */
+}
+
+/* ------------ RESPONSIVE DESIGN FOR HERO SECTION------------ */
+@media screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+/* ------------ TIMELINE SECTION ------------ */
+.timeline-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+.timeline-section h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* 
+   The timeline container with a center line. 
+   We use ::before for the line, and ::after for clearing.
+*/
+.timeline {
+  position: relative;
+  padding: 0 0 60px 0;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background-color: #ccc;
+}
+
+.timeline::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ------------ TIMELINE ITEMS ------------ */
+.timeline-item {
+  position: relative;
+  margin: 50px 0; /* spacing between each item */
+  width: 100%;
+}
+
+/* The marker (dot) that appears on the center line */
+.timeline-item .marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px; /* adjust for alignment */
+  width: 16px;
+  height: 16px;
+  background-color: #333;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* The content box for each timeline event */
+.timeline-content {
+  position: relative;
+  width: 45%;
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  max-height: 155px; /* Initial height for short info */
+  overflow: hidden;  /* Hide overflowing text */
+  transition: max-height 0.5s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* A small image for each timeline event */
+.timeline-content img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Title of each event */
+.timeline-content h3 {
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+  color: #00539C;
+}
+
+/* Short description displayed by default */
+.timeline-content .short-desc {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Details that might be partially hidden */
+.timeline-content .details {
+  margin-top: 5px;
+  color: #444;
+}
+
+.Goff-list {
+    text-align: center;
+}
+
+/* Flexbox for the title and image */
+.title-container {
+  display: flex; /* Horizontal alignment */
+  align-items: center; /* Vertically align items */
+  margin-bottom: 10px; /* Add spacing below the title-container */
+}
+
+.title-container img {
+  flex-shrink: 0; /* Prevent the image from shrinking */
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%; /* Make the image circular */
+}
+
+.title-container h3 {
+  margin: 0; /* Remove default margins */
+  font-size: 1.2rem;
+  color: #00539C;
+  word-wrap: break-word; /* Ensure text wraps to the next line if too long */
+  line-height: 1.4; /* Improve readability for multi-line titles */
+}
+
+/* Left-aligned (odd items) */
+.timeline-item:nth-child(odd) .title-container {
+  flex-direction: row-reverse; /* Image on the left, text on the right */
+}
+
+.timeline-item:nth-child(odd) .title-container img {
+  margin-left: 15px; /* Space between image and title */
+}
+
+/* Right-aligned (even items) */
+.timeline-item:nth-child(even) .title-container {
+  flex-direction: row; /* Image on the right, text on the left */
+}
+
+.timeline-item:nth-child(even) .title-container img {
+  margin-right: 15px; /* Space between image and title */
+}
+
+/* Keep the description styles the same */
+.timeline-content .short-desc {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.timeline-content .details {
+  margin-top: 5px;
+  color: #444;
+}
+
+
+/* ---------- LEFT/RIGHT STAGGERING ---------- */
+/* Odd items (1st, 3rd, 5th...) go to the left side */
+.timeline-item:nth-child(odd) .timeline-content {
+  float: left;
+  margin-right: 50%; /* push it left by half of the container */
+  text-align: right;
+}
+
+/* Even items (2nd, 4th, 6th...) go to the right side */
+.timeline-item:nth-child(even) .timeline-content {
+  float: right;
+  margin-left: 50%; /* push it right by half of the container */
+  text-align: left;
+}
+
+/* ------------ EXPAND ON HOVER WITH SCROLL ------------ */
+.timeline-item:hover .timeline-content {
+  max-height: 350px; /* Increase to show more text */
+  overflow: auto;    /* Allow scroll if text is too long */
+}
+
+/* Add scrollbars when expanded and content overflows */
+.timeline-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.timeline-content::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 4px;
+}
+
+/* Clear floats within each item so they stack nicely. 
+   (Alternatively, we could rely on .timeline::after to clear.) */
+.timeline-item::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ------------ FOOTER ------------ */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ------------ RESPONSIVE DESIGN ------------ */
+@media screen and (max-width: 800px) {
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  
+  .timeline-content {
+    width: 80%;
+    margin: 0 auto 30px auto; /* center the boxes */
+    float: none; /* remove floats on small devices */
+    text-align: left;
+  }
+
+  .timeline::before {
+    left: 20px; /* Shift line to the left if you like, or keep at 50% */
+  }
+
+  .marker {
+    left: 20px;
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .timeline-content img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* ------------ CERTIFICATIONS SECTION ------------ */
+.certifications-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.certifications-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #00539C;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Three Column Layout */
+.certifications-columns {
+  column-count: 3; /* Force 3 columns */
+  column-gap: 30px; /* Spacing between columns */
+}
+
+.certification-item {
+  display: inline-block; /* Ensures items respect the column layout */
+  width: 100%; /* Forces them to respect column width */
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  break-inside: avoid; /* Prevents breaking items between columns */
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certification-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Header with Company Name & Logo */
+.cert-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.cert-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.cert-header img {
+  width: 120px;
+  height: auto;
+}
+
+/* Certification List */
+.certification-item ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.certification-item ul li {
+  margin-bottom: 8px;
+}
+
+/* ------------ RESPONSIVE DESIGN ------------ */
+@media screen and (max-width: 900px) {
+  .certifications-columns {
+    column-count: 2; /* Reduce to two columns on medium screens */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .certifications-columns {
+    column-count: 1; /* Single column on small screens */
+  }
+}
+
+
+.work-completed-section,
+.presentations-section {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.work-completed-section h2,
+.presentations-section h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #00539C;
+}
+
+.work-list,
+.presentations-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.work-list li,
+.presentations-list li {
+  margin-bottom: 10px;
+}
+
+/* ------------ NAVIGATION BAR ------------ */
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  color: #00bfff;
+}
+
+/* ------------ HERO SECTION ------------ */
+.hero.personal-hero {
+  width: 100%;
+  height: 100vh;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    url('your-hero-image.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* ------------ OUTDOORS SECTION ------------ */
+.outdoors-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.outdoors-section h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #00539C;
+  text-align: center;
+}
+
+.outdoor-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.outdoor-item {
+  width: calc(50% - 20px);
+  text-align: center;
+}
+
+.outdoor-item img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.outdoor-item .caption {
+  font-size: 0.7rem;
+  margin-top: 5px;
+  color: #555;
+}
+
+.outdoor-paragraph{
+  text-align: center;
+  margin-bottom: 1rem; 
+}
+/* ------------ PHILOSOPHY SECTION ------------ */
+.philosophy-section {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.philosophy-content {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.philosophy-content h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #00539C;
+}
+
+.philosophy-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.philosophy-image img {
+  width: 80%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------ FOOTER ------------ */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+}
+
+footer a {
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
