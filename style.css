@@ -13,38 +13,63 @@ body {
 }
 
 /* ------------ NAVIGATION BAR ------------ */
+
+/* ------------ NAVIGATION BAR ------------ */
 .navbar {
-  background-color: #333;
-  padding: 10px 20px;
+  position: absolute; /* Makes the navbar float over the hero */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  background: transparent; /* Fully transparent */
+  z-index: 10; /* Ensures it stays above the hero background */
 }
 
+/* Flex container for navbar items */
 .navbar ul {
   list-style: none;
   display: flex;
   justify-content: flex-start;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
 }
 
 .navbar ul li {
   margin-right: 20px;
 }
 
+
+/* Navbar Links */
 .navbar ul li a {
-  color: #fff;
+  color: white; /* White text to contrast with hero background */
+  font-size: 1rem;
+  text-transform: uppercase;
   text-decoration: none;
+  padding: 10px 15px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
   font-weight: 500;
-  transition: color 0.3s ease;
 }
 
+/* Hover Effect */
 .navbar ul li a:hover,
 .navbar ul li a.active {
-  color: #00bfff;
+  color: #00bfff; /* Highlight color */
+  text-shadow: 0px 0px 2px rgba(0, 191, 255, 0.8); /* Glow effect */
+}
+
+/* Make sure navbar remains visible on scroll */
+.navbar.scrolled {
+  position: fixed; /* Stick to top after scrolling */
+  background: rgba(0, 0, 0, 0.7); /* Slightly visible when scrolling */
+  transition: background 0.3s ease-in-out;
 }
 
 /* ------------ HERO SECTION ------------ */
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh; /* Nearly full screen */
+  height: 100vh;
   background: 
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
     url('TitcombBasin.jpeg') center/cover no-repeat;
@@ -63,7 +88,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Subtle overlay */
+  background: rgba(0, 0, 0, 0.1); /* Subtle overlay */
 }
 
 /* Main hero content */
@@ -93,45 +118,16 @@ body {
   line-height: 1.6;
   max-width: 700px;
   margin: 0 auto 30px auto;
+  opacity: 0;
+  transform: translateY(20px); /* Start slightly lower */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* Buttons */
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+.hero-description.show {
+  opacity: 1;
+  transform: translateY(0); /* Moves into place */
 }
 
-.btn-primary,
-.btn-secondary {
-  padding: 12px 20px;
-  font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.btn-primary {
-  background: #00bfff;
-  color: white;
-}
-
-.btn-primary:hover {
-  background: #009acd;
-}
-
-.btn-secondary {
-  background: transparent;
-  border: 2px solid white;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background: white;
-  color: #333;
-}
 
 .hero-subtitle, .hero-description {
   white-space: pre-wrap; /* Ensures proper text wrapping */
@@ -160,23 +156,28 @@ body {
 
 /* ------------ TIMELINE SECTION ------------ */
 .timeline-section {
-  max-width: 1100px;
   margin: 0 auto;
   padding: 40px 20px;
-  background-color: #fff;
+  background-color: #181717;
 }
 
-.timeline-section h2 {
+.timeline-section h2{
   text-align: center;
   font-size: 2.2rem;
-  margin-bottom: 40px;
-  color: #333;
+  margin-bottom: 60px;
+  color: #fff;;
+}
+
+.timeline-section:hover h2{
+  color: #00bfff; /* Highlight color */
+  text-shadow: 0px 0px 2px rgba(0, 191, 255, 0.8); /* Glow effect */
 }
 
 /* 
    The timeline container with a center line. 
    We use ::before for the line, and ::after for clearing.
 */
+
 .timeline {
   position: relative;
   padding: 0 0 60px 0;
@@ -199,10 +200,10 @@ body {
   clear: both;
 }
 
-/* ------------ TIMELINE ITEMS ------------ */
 .timeline-item {
   position: relative;
   margin: 50px 0; /* spacing between each item */
+  margin-bottom: 80px;
   width: 100%;
 }
 
@@ -224,7 +225,7 @@ body {
 .timeline-content {
   position: relative;
   width: 45%;
-  background-color: #fafafa;
+  background-color: #181717;
   padding: 20px;
   border-radius: 4px;
   border: 1px solid #ddd;
@@ -232,6 +233,18 @@ body {
   overflow: hidden;  /* Hide overflowing text */
   transition: max-height 0.5s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.timeline-item:hover .timeline-content {
+  border: 2px solid #00bfff; /* Neon blue border */
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.75); /* Glowing effect */
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover .marker {
+  border-color: #00bfff; /* Neon blue border */
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.75); /* Glowing effect */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* A small image for each timeline event */
@@ -247,23 +260,19 @@ body {
 .timeline-content h3 {
   margin: 0 0 8px;
   font-size: 1.3rem;
-  color: #00539C;
+  color: #f5f7f9;
 }
 
 /* Short description displayed by default */
 .timeline-content .short-desc {
   margin-bottom: 5px;
-  color: #555;
+  color: #f8f7f7;
 }
 
 /* Details that might be partially hidden */
 .timeline-content .details {
   margin-top: 5px;
-  color: #444;
-}
-
-.Goff-list {
-    text-align: center;
+  color: #f1eeee;
 }
 
 /* Flexbox for the title and image */
@@ -284,7 +293,7 @@ body {
 .title-container h3 {
   margin: 0; /* Remove default margins */
   font-size: 1.2rem;
-  color: #00539C;
+  color: #f4f5f6;
   word-wrap: break-word; /* Ensure text wraps to the next line if too long */
   line-height: 1.4; /* Improve readability for multi-line titles */
 }
@@ -310,12 +319,12 @@ body {
 /* Keep the description styles the same */
 .timeline-content .short-desc {
   margin-bottom: 5px;
-  color: #555;
+  color: #f8f5f5;
 }
 
 .timeline-content .details {
   margin-top: 5px;
-  color: #444;
+  color: #f8f5f5;
 }
 
 
@@ -501,23 +510,60 @@ footer a:hover {
   }
 }
 
-
 .work-completed-section,
 .presentations-section {
   max-width: 900px;
   margin: 20px auto;
+  margin-bottom: 50px;
   padding: 20px;
-  background-color: #fff;
+  background-color: #181717;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fff;
 }
 
 .work-completed-section h2,
 .presentations-section h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-  color: #00539C;
+  text-align: center;
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+.work-completed-section:hover h2,
+.presentations-section:hover h2 {
+  color: #00bfff; /* Highlight color */
+  text-shadow: 0px 0px 2px rgba(0, 191, 255, 0.8); /* Glow effect */
+}
+
+.work-completed-section h3,
+.presentations-section h3 {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.work-completed-section a:hover,
+.presentations-section a:hover{
+  font-size: 1.3rem;
+}
+
+.work-completed-section a{
+  text-decoration: none; 
+}
+
+.work-completed-section a,
+.work-completed-section a:visited{
+  color: #fff;
+}
+
+.work-completed-section a:hover,
+.presentations-section a:hover {
+  text-decoration: underline;
+}
+
+.work-completed-section:hover,
+.presentations-section:hover {
+  border: 1px solid #00bfff;
 }
 
 .work-list,
@@ -531,32 +577,16 @@ footer a:hover {
   margin-bottom: 10px;
 }
 
-/* ------------ NAVIGATION BAR ------------ */
-.navbar {
-  background-color: #333;
-  padding: 10px 20px;
+.presentations-section h2{
+  padding-bottom: 1.5%;
 }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  justify-content: flex-start;
-}
+/* ------------- PERSONAL SECTION -------- */
 
-.navbar ul li {
-  margin-right: 20px;
-}
+/* ---------------------------------------- */
 
-.navbar ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.navbar ul li a:hover,
-.navbar ul li a.active {
-  color: #00bfff;
+body{
+  background-color: #181717;
 }
 
 /* ------------ HERO SECTION ------------ */
@@ -565,7 +595,7 @@ footer a:hover {
   height: 100vh;
   background: 
     linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-    url('your-hero-image.jpg') center/cover no-repeat;
+    url('Campsite.jpeg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -587,16 +617,31 @@ footer a:hover {
   max-width: 900px;
   margin: 40px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #181717;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.outdoors-section:hover{
+  border: 2px solid #00bfff; /* Neon blue border */
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.75); /* Glowing effect */
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.outdoors-section:hover h2{
+  color: #00bfff; /* Highlight color */
+  text-shadow: 0px 0px 2px rgba(0, 191, 255, 0.8); /* Glow effect */
+}
+
+.outdoors-section p{
+  color: white;
+}
+
 .outdoors-section h2 {
   font-size: 2rem;
   margin-bottom: 15px;
-  color: #00539C;
+  color: white;
   text-align: center;
 }
 
@@ -635,12 +680,26 @@ footer a:hover {
   max-width: 900px;
   margin: 40px auto;
   padding: 20px;
-  background-color: #fdfdfd;
+  background-color: #181717;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.philosophy-section:hover{
+  border: 2px solid #00bfff; /* Neon blue border */
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.75); /* Glowing effect */
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.philosophy-section:hover h2{
+  color: #00bfff; /* Highlight color */
+  text-shadow: 0px 0px 2px rgba(0, 191, 255, 0.8); /* Glow effect */
+}
+
+.philosophy-section p{
+  color: white;
+}
 .philosophy-content {
   flex: 1;
   padding-right: 20px;
@@ -649,7 +708,7 @@ footer a:hover {
 .philosophy-content h2 {
   font-size: 2rem;
   margin-bottom: 15px;
-  color: #00539C;
+  color: white;
 }
 
 .philosophy-image {
