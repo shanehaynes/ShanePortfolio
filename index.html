@@ -1,7 +1,8 @@
 <!--Notes:
 1. blue highlight on subtitle when hover
 2. maybe fade in hero section decription
-3. timeline section and rest made gray background, white text, title becomes blue highlight when highlighted
+3. delay after each descriptor in subtitle typing
+
 -->
 
 <!DOCTYPE html>
@@ -30,12 +31,10 @@
   
   <div class="hero-content">
     <h1>Shane Haynes</h1>
-    <p class="hero-subtitle"> Analytical Strategist | Systems Architect | Insatiable Learner</p>
+    <p class="hero-subtitle">Analytical Strategist | Systems Architect | Insatiable Learner</p>
 
     <p class="hero-description">
-      Solving complex problems at the intersection of technology and strategy, I specialize in data-driven decision-making, 
-      system architecture, and intelligent automation. With an insatiable desire to deeply understand the work at hand, 
-      I develop creative solutions that not only address challenges but also ensure value is both created and captured.
+      Solving complex problems at the intersection of technology and strategy, I specialize in data-driven decision-making, system architecture, and intelligent automation. With an insatiable desire to deeply understand the work at hand, I develop creative solutions that not only address challenges but also ensure value is both created and captured.
     </p>
 
     <div class="hero-buttons">
@@ -75,7 +74,7 @@
         <span class="marker"></span>
         <div class="timeline-content">
           <div class="title-container">
-            <img src="Maverik.webp" alt="Maverik Gas Station" />
+            <img src="MaverikLogo.webp" alt="Maverik Gas Station" />
             <h3>Data Science Internship - Maverik</h3>
           </div>
           <p class="short-desc">May 2021 - August 2021</p>
@@ -88,24 +87,21 @@
         </div>
       </div>
 
-      <!-- 3. Junior Year -->
+      <!-- 3. Goff Strategic Leadership Institute -->
       <div class="timeline-item">
         <span class="marker"></span>
         <div class="timeline-content">
           <div class="title-container">
             <img src="goffslc_logo.jpeg" alt="Goff Strategic Leadership Center Logo" />
-            <h3>Teaching Assistant - Goff Strategic Leadership Center</h3>
+            <h3>Teaching Assistant - Goff Strategic Leadership Institute</h3>
           </div>
           <p class="short-desc">January 2023- December 2023</p>
           <p class="details">
-            Coached students to develop strategic leadership skills by helping them complete various projects including:
-            <ul>
-              <li>Market analysis and market entry strategy for a novel smoke forecasting application</li>
-              <li>CVA for innovative computer chip wafers</li>
-              <li>Donor acquisition strategy for a women's health non-profit</li>
-              <li>Plan towards sustainability for a university-wide contraceptive initiative.</li>
-            </ul>
-            Was awarded the Strategic Leader Certification for demonstrated excellence in my work.
+            I coached students to develop strategic leadership skills by guiding them through various projects, 
+            including a market analysis and market entry strategy for a novel smoke forecasting application, a CVA for 
+            innovative computer chip wafers, a donor acquisition strategy for a women’s health non-profit, and a sustainability 
+            plan for a university-wide contraceptive initiative. My commitment to strategic leadership resulted in me receiving 
+            the Strategic Leader Award for demonstrated excellence in my work.
           </p>
         </div>
       </div>
@@ -156,13 +152,39 @@
           <p class="details">
             As a developer in the Intelligent Automation and System Integration team, I design and implement software solutions that
             automate business workflows and integrate disparate systems. This work frequently involves developing custom interfaces, 
-            data pipelines, and automation routines. 
+            data pipelines, and automation routines. <br></br>
+            I recently helmed the migration of all integrations between Eide Bailly's CRM and ERP. These integrations are responsible 
+            for automating a suite of business tasks and syncing data that compromise hundreds of thousands of records. I continue to own 
+            and improve upon these integrations given changing business requirements. 
           </p>
         </div>
       </div>
 
     </div>
   </section>
+
+  <!-- Professional Work Completed Section -->
+  <section class="work-completed-section">
+    <h2>Passion Projects</h2>
+    <ul class="work-list">
+      <li><a href="https://shanehaynes.github.io/Blog/"><h3>Philosophy Incorporated</h3></a></li>
+      <p->A blog that I designed and built in which myself and few college friends write various philosophical,
+        political, and scientific posts for.</p->
+    </ul>
+  </section>
+
+
+  <!-- Presentations Section -->
+  <section class="presentations-section">
+    <h2>Speaking and Presentation Engagements</h2>
+    <ul class="presentations-list">
+      <li><strong>Presentation: </strong><i>On Leadership: A Philosophical Analysis on Management Structure</i><br>
+        @ Goff Strategic Leadership Institute</li>
+      <li><strong>Speaking: </strong><i>Guest Speaker at Career Q&A</i><br>
+        @ Goff Strategic Leadership Institute</li>
+    </ul>
+  </section>
+
 
 <!-- Certifications Section -->
 <section class="certifications-section">
@@ -235,28 +257,6 @@
   </div>
 </section>
 
-
-  <!-- Professional Work Completed Section -->
-  <section class="work-completed-section">
-    <h2>Professional Work Completed</h2>
-    <ul class="work-list">
-      <li>A</li>
-      <li>B</li>
-      <li>C</li>
-    </ul>
-  </section>
-
-  <!-- Presentations Section -->
-  <section class="presentations-section">
-    <h2>Speaking and Presentation Engagements</h2>
-    <ul class="presentations-list">
-      <li><strong>Presentation: </strong><i>On Leadership: A Philosophical Analysis on Management Structure</i><br>
-        @ Goff Strategic Leadership Institute</li>
-      <li><strong>Speaking: </strong><i>Guest Speaker at Career Q&A</i><br>
-        @ Goff Strategic Leadership Institute</li>
-    </ul>
-  </section>
-
   <!-- Footer -->
   <footer>
     <p>
@@ -269,20 +269,6 @@
   </footer>
 
 <script>
-  // Select all timeline content boxes
-  const timelineContents = document.querySelectorAll('.timeline-content');
-
-  // Add an event listener to reset scroll position when the box shrinks
-  timelineContents.forEach((box) => {
-    box.addEventListener('mouseleave', () => {
-      if (box.scrollHeight > box.offsetHeight) {
-        box.scrollTop = 0; // Reset scroll position to the top
-      }
-    });
-  });
-</script>
-
-<script>
   // Function for typing effect
   function typeEffect(element, text, speed, callback) {
     let i = 0;
@@ -292,30 +278,47 @@
         i++;
         setTimeout(typing, speed);
       } else if (callback) {
-        setTimeout(callback, 500); // Small delay before starting the next typing effect
+        setTimeout(callback, 600); // Small delay before fade-in
       }
     }
     typing();
   }
 
-  // When the page loads, start the typing effect
+  // Function to fade in an element
+  function fadeIn(element, duration) {
+    element.style.opacity = 0;
+    element.style.display = "block"; // Ensure the element is visible
+    let opacity = 0;
+    const increment = 50 / duration; // Adjusts fade speed
+
+    function animate() {
+      opacity += increment;
+      if (opacity >= 1) {
+        element.style.opacity = 1;
+      } else {
+        element.style.opacity = opacity;
+        requestAnimationFrame(animate);
+      }
+    }
+    animate();
+  }
+
+  // When the page loads, start the typing effect, then fade in the description
   document.addEventListener("DOMContentLoaded", function () {
     const subtitle = document.querySelector(".hero-subtitle");
     const description = document.querySelector(".hero-description");
 
     // Clear existing text
     subtitle.innerHTML = "";
-    description.innerHTML = "";
+    description.style.opacity = 0; // Hide description initially
 
-    // Start typing effect for subtitle first, then for description
-    typeEffect(subtitle, "Strategic Thinker | Data Enthusiast | Problem Solver", 50, function () {
-      typeEffect(description, 
-        "Passionate about bridging technology and decision-making, I specialize in data-driven strategy, system integrations, and automation. Currently working as an Integrations Engineer at Eide Bailly.", 
-        35
-      );
+    // Start typing effect for subtitle, then fade in description
+    typeEffect(subtitle, "Analytical Strategist | Systems Architect | Insatiable Learner", 55, function () {
+      fadeIn(description, 2000); // Fade in over 0.8 seconds
     });
   });
 </script>
+
 
 </body>
 </html>
