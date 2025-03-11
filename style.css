@@ -561,11 +561,6 @@ footer a:hover {
   color: #fff;
 }
 
-.work-completed-section a:hover,
-.presentations-section a:hover{
-  font-size: 1.3rem;
-}
-
 .work-completed-section a{
   text-decoration: none; 
 }

@@ -2,7 +2,6 @@
 1. blue highlight on subtitle when hover
 2. maybe fade in hero section decription
 3. delay after each descriptor in subtitle typing
-
 -->
 
 <!DOCTYPE html>
@@ -249,7 +248,7 @@
   </footer>
 
 <script>
-  // Function for typing effect
+  // Function for typing effect (unchanged from your code)
   function typeEffect(element, text, speed, callback) {
     let i = 0;
     function typing() {
@@ -258,13 +257,14 @@
         i++;
         setTimeout(typing, speed);
       } else if (callback) {
-        setTimeout(callback, 600); // Small delay before fade-in
+        // Small delay before calling callback
+        setTimeout(callback, 600);
       }
     }
     typing();
   }
 
-  // Function to fade in an element
+  // Function to fade in an element (unchanged from your code)
   function fadeIn(element, duration) {
     element.style.opacity = 0;
     element.style.display = "block"; // Ensure the element is visible
@@ -283,20 +283,67 @@
     animate();
   }
 
-  // When the page loads, start the typing effect, then fade in the description
+  /**
+   * NEW: Type multiple strings in sequence, with a delay after each.
+   * @param {HTMLElement} element - The element to type into.
+   * @param {string[]} strings - An array of strings to type in sequence.
+   * @param {number} speed - Milliseconds between each character typed.
+   * @param {number} delayBetween - Delay in ms between finishing one string & starting the next.
+   * @param {Function} callback - Called after all strings have been typed.
+   */
+  function typeMultipleStrings(element, strings, speed, delayBetween, callback) {
+    let currentIndex = 0;
+
+    function typeNextString() {
+      // If we've exhausted all strings, trigger callback & stop
+      if (currentIndex >= strings.length) {
+        if (callback) callback();
+        return;
+      }
+
+      // Type the current string
+      const currentString = strings[currentIndex];
+      typeEffect(element, currentString, speed, function () {
+        // (Optional) Add a separator between strings if you want 
+        // the same line with “ | ”. Remove this if you don't need it.
+        if (currentIndex < strings.length - 1) {
+          element.innerHTML += " | "; 
+        }
+
+        // After typing one string, wait briefly, then type the next
+        currentIndex++;
+        setTimeout(typeNextString, delayBetween);
+      });
+    }
+
+    typeNextString();
+  }
+
+  // When the page loads, start typing each phrase in turn, then fade in the description
   document.addEventListener("DOMContentLoaded", function () {
     const subtitle = document.querySelector(".hero-subtitle");
     const description = document.querySelector(".hero-description");
 
-    // Clear existing text
+    // Clear existing text and hide description initially
     subtitle.innerHTML = "";
-    description.style.opacity = 0; // Hide description initially
+    description.style.opacity = 0;
 
-    // Start typing effect for subtitle, then fade in description
-    typeEffect(subtitle, "Analytical Strategist | Systems Architect | Insatiable Learner", 55, function () {
-      fadeIn(description, 2000); // Fade in over 0.8 seconds
-    });
+    // Call our new function with multiple strings
+    typeMultipleStrings(
+      subtitle,
+      [
+        "Analytical Strategist",
+        "Systems Architect",
+        "Insatiable Learner"
+      ],
+      /* speed of typing each character */ 40,
+      /* delay (ms) after each phrase */ 300,
+      /* callback once all phrases typed */ function () {
+        fadeIn(description, 2000); // e.g. fade in over 2s
+      }
+    );
   });
 </script>
+
 </body>
 </html>
