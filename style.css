@@ -755,3 +755,78 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
+/* =========================================================
+   ---------------------------------------------------------
+   RESPONSIVE ENHANCEMENTS
+   Only overrides below this line – desktop styles unchanged
+   ---------------------------------------------------------
+   ========================================================= */
+
+/* ---------- up to 900 px ---------- */
+@media (max-width: 900px) {
+  /* certifications: 2-col masonry → 1-col */
+  .certification-card      { width: 45%; }
+  .certifications-grid     { gap: 20px; }
+
+  /* text sizing */
+  .hero h1                 { font-size: 3.2rem; }
+}
+
+/* ---------- up to 768 px ---------- */
+@media (max-width: 768px) {
+  /* NAVBAR stacks vertically */
+  .navbar                 { padding: 10px 15px; }
+  .navbar ul              { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .navbar ul li           { margin-right: 0; }
+
+  /* HERO text */
+  .hero h1                { font-size: 3rem; }
+  .hero-subtitle          { font-size: 1.2rem; }
+  .hero-description       { font-size: 1rem; }
+
+  /* TIMELINE becomes single-column */
+  .timeline::before       { left: 20px; }
+  .timeline-item .marker  { left: 20px; transform: none; }
+  .timeline-content,
+  .timeline-item:nth-child(odd)  .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    width: calc(100% - 40px);
+    margin: 0 0 30px 40px;
+    float: none;
+    text-align: left;
+  }
+  .title-container,
+  .title-container img    { flex-direction: row; margin: 0 15px 0 0; }
+
+  /* CERTIFICATIONS now 1-col */
+  .certification-card     { width: 100%; }
+
+  /* OUTDOOR gallery full-width images */
+  .outdoor-item           { width: 100%; }
+
+  /* PHILOSOPHY stacks image & text */
+  .philosophy-section     { flex-direction: column; }
+  .philosophy-content     { padding-right: 0; margin-bottom: 20px; }
+  .philosophy-image img   { width: 100%; }
+}
+
+/* ---------- up to 600 px ---------- */
+@media (max-width: 600px) {
+  /* tighter hero typography */
+  .hero h1                { font-size: 2.5rem; }
+  .hero-subtitle          { font-size: 1.1rem; }
+
+  /* timeline avatar shrink */
+  .timeline-content img   { width: 60px; height: 60px; }
+
+  /* equalise section paddings */
+  .site-section,
+  .work-completed-section,
+  .presentations-section,
+  .outdoors-section,
+  .philosophy-section     { padding: 15px; }
+
+  /* reduce footer padding */
+  footer                  { padding: 20px 0; }
+}
