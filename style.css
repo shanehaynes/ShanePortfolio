@@ -228,7 +228,8 @@ body {
   background-color: #181717;
   padding: 20px;
   border-radius: 4px;
-  border: 1px solid #ddd;
+  border: 2px solid transparent;
+  border-color: #ddd;
   max-height: 155px; /* Initial height for short info */
   overflow: hidden;  /* Hide overflowing text */
   box-sizing: border-box;
@@ -238,7 +239,7 @@ body {
 }
 
 .timeline-item:hover .timeline-content {
-  border: 2px solid #00bfff; /* Neon blue border */
+  border-color: #00bfff; /* Neon blue border */
   box-shadow: 0 0 12px rgba(0, 191, 255, 0.75); /* Glowing effect */
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
