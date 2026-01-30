@@ -673,6 +673,8 @@ body{
 
 .outdoor-item img {
   width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
   border-radius: 8px;
   object-fit: cover;
 }
@@ -734,6 +736,8 @@ body{
 
 .philosophy-image img {
   width: 80%;
+  height: auto;
+  aspect-ratio: 4 / 3;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
