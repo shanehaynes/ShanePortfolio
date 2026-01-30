@@ -231,6 +231,8 @@ body {
   border: 1px solid #ddd;
   max-height: 155px; /* Initial height for short info */
   overflow: hidden;  /* Hide overflowing text */
+  box-sizing: border-box;
+  scrollbar-gutter: stable;
   transition: max-height 0.5s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -346,7 +348,8 @@ body {
 /* ------------ EXPAND ON HOVER WITH SCROLL ------------ */
 .timeline-item:hover .timeline-content {
   max-height: 350px; /* Increase to show more text */
-  overflow: auto;    /* Allow scroll if text is too long */
+  overflow-y: auto;    /* Allow scroll if text is too long */
+  overflow-x: hidden;
 }
 
 /* Add scrollbars when expanded and content overflows */
