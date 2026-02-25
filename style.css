@@ -677,7 +677,7 @@ body{
 
 .outdoor-item img {
   width: 100%;
-  height: 200px;
+  height: auto;
   aspect-ratio: 1 / 1;
   border-radius: 8px;
   object-fit: cover;
