@@ -234,14 +234,16 @@ body {
   overflow: hidden;  /* Hide overflowing text */
   box-sizing: border-box;
   scrollbar-gutter: stable;
-  transition: max-height 0.5s ease;
+  will-change: max-height;
+  transition: max-height 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .timeline-item:hover .timeline-content {
   border-color: #00bfff; /* Neon blue border */
   box-shadow: 0 0 12px rgba(0, 191, 255, 0.75); /* Glowing effect */
-  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 .timeline-item:hover .marker {
