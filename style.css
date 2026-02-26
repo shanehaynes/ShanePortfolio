@@ -656,7 +656,7 @@ body{
 }
 
 .outdoors-section:hover{
-  border: 2px solid #00bfff; /* Neon blue border */
+  border: 1px solid #00bfff; /* Neon blue border */
   box-shadow: 0 0 12px rgba(0, 191, 255, 0.75); /* Glowing effect */
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
@@ -724,6 +724,7 @@ body{
 }
 
 .philosophy-section:hover{
+  border: 1px solid #00bfff; /* Neon blue border */
   box-shadow: 0 0 12px rgba(0, 191, 255, 0.75); /* Glowing effect */
 }
 
