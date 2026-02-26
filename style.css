@@ -717,12 +717,12 @@ body{
   background-color: #181717;
   border: 1px solid #ddd;
   border-radius: 8px;
+  box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .philosophy-section:hover{
-  border: 1px solid #00bfff; /* Neon blue border */
   box-shadow: 0 0 12px rgba(0, 191, 255, 0.75); /* Glowing effect */
 }
 
