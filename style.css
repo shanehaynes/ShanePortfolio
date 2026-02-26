@@ -105,6 +105,18 @@ body {
   margin-bottom: 10px;
 }
 
+.hero-name-link {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.hero-name-link:hover,
+.hero-name-link:focus-visible {
+  color: #00bfff;
+  text-shadow: 0px 0px 2px rgba(0, 191, 255, 0.8);
+}
+
 .hero-subtitle {
   font-size: 1.5rem;
   font-weight: 400;
