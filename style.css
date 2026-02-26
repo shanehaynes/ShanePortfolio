@@ -105,10 +105,7 @@ body {
   margin-bottom: 10px;
 }
 
-.hero-name-link,
-.hero-name-link:link,
-.hero-name-link:visited,
-.hero-name-link:active {
+.hero-name-link {
   color: #fff;
   text-decoration: none;
   transition: color 0.3s ease, text-shadow 0.3s ease;
@@ -248,6 +245,8 @@ body {
   border-color: #ddd;
   max-height: 155px; /* Initial height for short info */
   overflow: hidden;  /* Hide overflowing text */
+  -ms-overflow-style: none; /* Hide scrollbar in IE and legacy Edge */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
   box-sizing: border-box;
   scrollbar-gutter: stable;
   will-change: max-height;
@@ -373,12 +372,9 @@ body {
 
 /* Add scrollbars when expanded and content overflows */
 .timeline-content::-webkit-scrollbar {
-  width: 6px;
-}
-
-.timeline-content::-webkit-scrollbar-thumb {
-  background: #999;
-  border-radius: 4px;
+  width: 0;
+  height: 0;
+  display: none; /* Hide scrollbar in WebKit browsers while preserving scrolling */
 }
 
 /* Clear floats within each item so they stack nicely. 
@@ -722,13 +718,13 @@ body{
   background-color: #181717;
   border: 1px solid #ddd;
   border-radius: 8px;
+  box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .philosophy-section:hover{
-  border: 2px solid #00bfff; /* Neon blue border */
   box-shadow: 0 0 12px rgba(0, 191, 255, 0.75); /* Glowing effect */
-  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 .philosophy-section:hover h2{
