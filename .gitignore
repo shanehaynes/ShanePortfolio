@@ -1,0 +1,10 @@
+# Agent-only secrets. Never ship, never commit.
+.env.agents
+
+# Scratch and generation working dirs
+.media-work/
+*.log
+
+# OS / editor noise
+.DS_Store
+Thumbs.db

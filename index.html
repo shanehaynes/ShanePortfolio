@@ -1,354 +1,178 @@
-<!--Notes:
-1. blue highlight on subtitle when hover
-2. maybe fade in hero section decription
-3. delay after each descriptor in subtitle typing
--->
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Professional yet fun resume website" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Resume - Career</title>
-  <link rel="preload" as="image" href="images/TitcombBasin.jpeg" fetchpriority="high" />
-  <!-- Link to external CSS file -->
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shane Haynes</title>
+<meta name="description" content="Shane Haynes. Philosopher Builder. Work, writing, mountains, philosophy.">
+<meta name="theme-color" content="#0B0F14">
+<link rel="canonical" href="https://shanehaynes.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shane Haynes">
+<meta property="og:description" content="Philosopher Builder. Work, writing, mountains, philosophy.">
+<meta property="og:url" content="https://shanehaynes.com/">
+<meta property="og:image" content="https://shanehaynes.com/media/hero-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ibm-plex-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html" class="active">Career</a></li>
-      <li><a href="personal.html">Personal Pursuits</a></li>
-    </ul>
-  </nav>
+<nav class="index" aria-label="Sections">
+  <a href="#philosophy">Philosophy</a>
+  <a href="#work">Work</a>
+  <a href="#mountains">Mountains</a>
+  <a href="#writing">Writing</a>
+</nav>
 
-  <!-- Hero Section -->
-<header class="hero">
-  <div class="hero-overlay"></div> <!-- Darkened overlay for better text contrast -->
-  
-  <div class="hero-content">
-    <h1>
-      <a href="https://www.linkedin.com/in/shane-haynes" class="hero-name-link" target="_blank" rel="noopener noreferrer">
-        Shane Haynes
-      </a>
-    </h1>
-    <p class="hero-subtitle">Philosopher Builder | Insatiable Learner</p>
+<p class="turn" role="status">Best in landscape · turn your phone</p>
 
-    <p class="hero-description">
-      Solving complex problems at the intersection of technology and strategy, I specialize in data-driven decision-making, system architecture, and intelligent automation. With an insatiable desire to deeply understand the work at hand, I develop creative solutions that not only address challenges but also ensure value is both created and captured.
-    </p>
-
-    <div class="hero-buttons">
-    </div>
+<header class="hero" id="hero">
+  <video id="hold" autoplay muted playsinline loop preload="auto" poster="media/hero-poster.jpg" aria-hidden="true" tabindex="-1">
+    <source src="media/hero-1080.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+    <source src="media/hero-1080.vp9.webm" type='video/webm; codecs="vp09.00.40.08"'>
+    <source src="media/hero-720.h264.mp4" type='video/mp4; codecs="avc1.640028"'>
+  </video>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="id">
+    <h1 class="name">Shane Haynes</h1>
+    <p class="role">Philosopher Builder</p>
   </div>
+  <p class="readout" aria-label="Location"><span>After Titcomb Basin</span><span>43.17°N 109.65°W · 3200 M</span></p>
 </header>
 
+<main>
 
-  <!-- Introduce a quick description on intro section. something like "passionate about solving complex problems and continous learning"-->
-
-  <!-- Timeline Section -->
-  <section class="timeline-section">
-    <h2>Career Timeline</h2>
-
-    <!-- Timeline Container -->
-    <div class="timeline">
-
-      <!-- 1. Begin College -->
-      <div class="timeline-item">
-        <span class="marker"></span>
-        <div class="timeline-content">
-          <div class="title-container">
-            <img src="images/U-logo.jpg" alt="University of Utah Logo" width="900" height="900" loading="lazy" decoding="async" />
-            <h3>Enroll at University of Utah</h3>
-          </div>
-          <p class="short-desc">August 2020</p>
-          <p class="details">
-            After graduating high school with varsity letters in 3 sports and 4 academic disciplines, I enrolled at the University of Utah 
-            as a Presidential Scholar -- a full ride, merit based scholarship.  
-          </p>
-        </div>
-      </div>
-
-      <!-- 2. Maverik Internship -->
-      <div class="timeline-item">
-        <span class="marker"></span>
-        <div class="timeline-content">
-          <div class="title-container">
-            <img src="images/MaverikLogo.webp" alt="Maverik Gas Station" width="1000" height="1000" loading="lazy" decoding="async" />
-            <h3>Data Science Internship - Maverik</h3>
-          </div>
-          <p class="short-desc">May 2021 - August 2021</p>
-          <p class="details">
-            Created models that predicted the variation in retail store product sales from forecasted weather. 
-            Crafted analytical approach that started with rudimentary analysis in MS Excel and concluded with model 
-            generation using MS Azure's machine learning services. Utilized MS SQL Server Management Studio to 
-            clean and extract data. Presented findings to senior management including the CEO.
-          </p>
-        </div>
-      </div>
-
-      <!-- 3. Goff Strategic Leadership Institute -->
-      <div class="timeline-item">
-        <span class="marker"></span>
-        <div class="timeline-content">
-          <div class="title-container">
-            <img src="images/goffslc_logo.jpeg" alt="Goff Strategic Leadership Center Logo" width="200" height="200" loading="lazy" decoding="async" />
-            <h3>Teaching Assistant - Goff Strategic Leadership Institute</h3>
-          </div>
-          <p class="short-desc">January 2023- December 2023</p>
-          <p class="details">
-            I coached students to develop strategic leadership skills by guiding them through various projects, 
-            including a market analysis and market entry strategy for a novel smoke forecasting application, a CVA for 
-            innovative computer chip wafers, a donor acquisition strategy for a women’s health non-profit, and a sustainability 
-            plan for a university-wide contraceptive initiative. My commitment to strategic leadership resulted in me receiving 
-            the Strategic Leader Award for demonstrated excellence in my work.
-          </p>
-        </div>
-      </div>
-
-      <!-- 4. Senior Year -->
-      <div class="timeline-item">
-        <span class="marker"></span>
-        <div class="timeline-content">
-          <div class="title-container">
-            <img src="images/EideBailly Logo.png" alt="Eide Bailly Logo" width="1200" height="1200" loading="lazy" decoding="async" />
-            <h3>Technology Solutions Future Consultant - Eide Bailly</h3>
-          </div>
-          <p class="short-desc">May 2023 - January 2024</p>
-          <p class="details">
-            Learned a variety of technical skills and gained a plethora of certifications while working on 
-            client projects.
-          </p>
-        </div>
-      </div>
-
-      <!-- 5. Graduation -->
-      <div class="timeline-item">
-        <span class="marker"></span>
-        <div class="timeline-content">
-          <div class="title-container">
-            <img src="images/MeGradPhoto.jpeg" alt="Shane Haynes Graduation Photo" width="2231" height="1799" loading="lazy" decoding="async" />
-            <h3>Graduation</h3>
-          </div>
-          <p class="short-desc">May 2024</p>
-          <p class="details">
-            Graduated from the University of Utah with two degrees: 1. Quantitative Analysis of Markets 
-            and Organizations 2. Philosophy of Science. These degrees conferred knowledge in microeconomics, machine learning, 
-            econometrics, game theory, argumentation, professional writing, and public speaking. I continue to be involved in the 
-            Goff Strategic Leadership Center as a Guest Speaker and Alumni Coordinator. 
-          </p>
-        </div>
-      </div>
-
-      <!-- 6. Eide Bailly Integrations Developer-->
-      <div class="timeline-item">
-        <span class="marker"></span>
-        <div class="timeline-content">
-          <div class="title-container">
-            <img src="images/EideBailly Logo.png" alt="Eide Bailly Logo" width="1200" height="1200" loading="lazy" decoding="async" />
-            <h3>Integrations Developer - Eide Bailly</h3>
-          </div>
-          <p class="short-desc">Jan 2024 - Present</p>
-          <p class="details">
-            As a developer in the Intelligent Automation and System Integration team, I design and implement software solutions that
-            automate business workflows and integrate disparate systems. This work frequently involves developing custom interfaces, 
-            data pipelines, and automation routines. <br></br>
-            I recently helmed the migration of all integrations between Eide Bailly's CRM and ERP. These integrations are responsible 
-            for automating a suite of business tasks and syncing data that compromise hundreds of thousands of records. I continue to own 
-            and improve upon these integrations given changing business requirements. 
-          </p>
-        </div>
-      </div>
-
+<section class="sec" id="philosophy">
+  <div class="rule mono"><span class="lab">Philosophy</span><span class="ro">Dostoevsky · Herbert · Kierkegaard · Camus</span></div>
+  <div class="g">
+    <div class="voice">
+      <h2>Great works endure because they wrestle with what does not change</h2>
+      <p>Freedom, suffering, duty, meaning, love. In my spare time I read literature and study philosophy, and I find myself in the great works more often than I expect to. Dostoevsky's <i>Brothers Karamazov</i> and Herbert's <i>Dune</i> remain touchstones.</p>
+      <p>The existential clarity of Kierkegaard and Camus shaped how I decide anything at all: take the leap with clear eyes, and let the struggle toward the heights be enough.</p>
     </div>
-  </section>
-
-  <!-- Professional Work Completed Section -->
-  <section class="work-completed-section">
-    <h2>Passion Projects</h2>
-    <ul class="work-list">
-      <li><a href="https://shanehaynes.substack.com/?utm_campaign=profile_chips"><h3>Substack</h3></a></li>
-      <p>I share philosophical musings, perspectives on technology, and thoughtful ideas on a wide range of societal phenomena.</p>
-    </ul>
-  </section>
-
-
-  <!-- Presentations Section -->
-  <section class="presentations-section">
-    <h2>Speaking and Presentation Engagements</h2>
-    <ul class="presentations-list">
-      <li><strong>Presentation: </strong><i>The AI Augmented Mind: AI is a lever on human potential — the trick is learning where to place the fulcrum.</i><br>
-        @ Goff Strategic Leadership Institute</li>
-      <li><strong>Presentation: </strong><i>On Leadership: A Philosophical Analysis on Management Structure</i><br>
-        @ Goff Strategic Leadership Institute</li>
-      <li><strong>Speaking: </strong><i>Guest Speaker at Career Q&A</i><br>
-        @ Goff Strategic Leadership Institute</li>
-    </ul>
-  </section>
-
-<!--CERTIFICAITON SECTION-->
-<section class="site-section" id="certifications">
-  <div class="container">
-    <h2 class="section-heading">Technical Certifications</h2>
-    <!-- Grid of Certification Cards -->
-    <div class="certifications-grid">
-      <!-- Example card for AWS -->
-      <div class="certification-card">
-        <img src="images/AWSLogo.png" alt="AWS Logo" class="cert-logo" width="1200" height="630" loading="lazy" decoding="async">
-        <h3>AWS</h3>
-        <ul>
-          <li>Solutions Architect – Associate</li>
-          <li>Cloud Practitioner</li>
+    <div class="ev">
+      <figure class="bk">
+        <picture>
+          <source type="image/avif" srcset="media/books-1600.avif 1600w, media/books-2400.avif 2400w" sizes="(max-width:1023px) 100vw, 50vw">
+          <img src="media/books-1600.jpg" srcset="media/books-1600.jpg 1600w, media/books-2400.jpg 2400w" sizes="(max-width:1023px) 100vw, 50vw" width="1600" height="1259" loading="lazy" decoding="async" alt="A stack of books: Dune, The Brothers Karamazov, Fear and Trembling, The Myth of Sisyphus, The Lily of the Field and the Bird of the Air">
+        </picture>
+        <ul class="mono">
+          <li><span>Dostoevsky</span><span>The Brothers Karamazov</span></li>
+          <li><span>Herbert</span><span>Dune</span></li>
+          <li><span>Kierkegaard</span><span>Fear and Trembling</span></li>
+          <li><span>Camus</span><span>The Myth of Sisyphus</span></li>
+          <li><span>Kierkegaard</span><span>The Lily of the Field and the Bird of the Air</span></li>
         </ul>
-      </div>
-
-      <!-- Example card for Microsoft -->
-      <div class="certification-card">
-        <img src="images/MicrosoftLogo.png" alt="Microsoft Logo" class="cert-logo" width="371" height="136" loading="lazy" decoding="async">
-        <h3>Microsoft</h3>
-        <ul>
-          <li>Azure Fundamentals</li>
-          <li>Security, Compliance, and Identity Fundamentals</li>
-          <li>Microsoft 365 Fundamentals</li>
-        </ul>
-      </div>
-
-      <!-- Example card for Boomi -->
-      <div class="certification-card">
-        <img src="images/BoomiLogo.jpg" alt="Boomi Logo" class="cert-logo" width="900" height="900" loading="lazy" decoding="async">
-        <h3>Boomi</h3>
-        <ul>
-          <li>Associate Administrator</li>
-          <li>Associate EDI for X12 Developer</li>
-          <li>Associate Integrations Developer</li>
-        </ul>
-      </div>
-
-      <!-- Example card for Workato -->
-      <div class="certification-card">
-        <img src="images/WorkatoLogo.png" alt="Workato Logo" class="cert-logo" width="225" height="225" loading="lazy" decoding="async">
-        <h3>Workato</h3>
-        <ul>
-          <li>Automation Pro III</li>
-          <li>Automation League Implementation Specialist</li>
-          <li>Automation League Automation Expert</li>
-        </ul>
-      </div>
-    </div> <!-- .certifications-grid -->
+      </figure>
+    </div>
   </div>
 </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>
-      Connect with me on 
-      <a href="https://www.linkedin.com/in/shane-haynes" 
-         target="_blank" rel="noopener noreferrer">
-        LinkedIn
-      </a>
-    </p>
-  </footer>
+<section class="sec" id="work">
+  <div class="rule mono"><span class="lab">Work</span><span class="ro">Salt Lake City → New Haven · 2020 → 2028</span></div>
+  <div class="g">
+    <div class="voice">
+      <h2>Build the whole thing, then own it</h2>
+      <p>I am a synthesizer rather than a specialist. What holds my attention is the full arc of a problem: finding it, winning the argument for it, building the thing, and being responsible for what happens next.</p>
+      <p>Most of my work has been teaching systems to talk to each other, and lately teaching them to think a little. I build guided by a philosophy rather than for building's sake, and I treat what I ship as a hypothesis the world gets to answer. Next, an MBA at Yale, to widen the scope of what I can own.</p>
+      <div class="links">
+        <a class="lnk" href="https://www.linkedin.com/in/shane-haynes" rel="me">LinkedIn</a>
+        <a class="lnk" href="https://github.com/shanehaynes" rel="me">GitHub</a>
+        <a class="lnk" href="record.html">Full record</a>
+      </div>
+    </div>
+    <div class="ev">
+      <div class="pnl">
+        <div><span class="y">2026 →</span><span class="r">MBA, Yale School of Management<small>Dean's Scholar · New Haven</small></span></div>
+        <div><span class="y">2025</span><span class="r">Intelligent Automations Developer, Eide Bailly<small>The firm's first production AI systems</small></span></div>
+        <div><span class="y">2024</span><span class="r">Integrations Developer, Eide Bailly<small>Systems that talk to each other</small></span></div>
+        <div><span class="y">2024</span><span class="r">Econometrics and Philosophy, University of Utah<small>Presidential Scholar · Goff Strategic Leader</small></span></div>
+        <div><span class="y">2023</span><span class="r">Cybersecurity Automation, Eide Bailly<small>A new vertical, prototyped</small></span></div>
+        <div><span class="y">2023</span><span class="r">Teaching, Goff Strategic Leadership Institute<small>Strategic Leader Award · Guest Lecturer since</small></span></div>
+        <div><span class="y">2021</span><span class="r">Data Science Intern, Maverik<small>Weather into sales</small></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="mountains">
+  <div class="rule mono"><span class="lab">Mountains</span><span class="ro">Wasatch · Stansbury · Zion · Wind River</span></div>
+  <div class="g">
+    <div class="voice">
+      <h2>No cathedral more sublime, no crucible more stern</h2>
+      <p>Most of my time away from a laptop is spent under the sun, even if transitively by way of thick cloud or fog. The untouched natural world is the one place that still asks something of you, and I go to it partly for the reminder that existence is not guaranteed.</p>
+      <p>The climbs are committing, the ski lines are steep, and the adventures are almost always better for the people I do them with.</p>
+    </div>
+    <div class="ev">
+      <div class="ph">
+        <figure class="wide">
+          <picture>
+            <source type="image/avif" srcset="media/zion-1600.avif 1600w, media/zion-2400.avif 2400w" sizes="(max-width:1023px) 100vw, 50vw">
+            <img src="media/zion-1600.jpg" srcset="media/zion-1600.jpg 1600w, media/zion-2400.jpg 2400w" sizes="(max-width:1023px) 100vw, 50vw" width="1600" height="1067" loading="lazy" decoding="async" alt="Jordan climbing a sandstone crack far above the canyon floor in Zion">
+          </picture>
+          <figcaption class="mono"><span>Zion National Park · 37.27°N 112.95°W · 1980 M</span><span>Jordan, 2000 ft above the floor</span></figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source type="image/avif" srcset="media/wasatch-1600.avif 1600w, media/wasatch-2400.avif 2400w" sizes="(max-width:1023px) 100vw, 25vw">
+            <img src="media/wasatch-1600.jpg" srcset="media/wasatch-1600.jpg 1600w, media/wasatch-2400.jpg 2400w" sizes="(max-width:1023px) 100vw, 25vw" width="1600" height="1067" loading="lazy" decoding="async" alt="Jordan skiing deep snow in a whiteout in the Wasatch">
+          </picture>
+          <figcaption class="mono"><span>Wasatch Range · 40.58°N 111.64°W · 2900 M</span><span>Jordan, great snow in a whiteout</span></figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source type="image/avif" srcset="media/stansbury-1600.avif 1600w, media/stansbury-2400.avif 2400w" sizes="(max-width:1023px) 100vw, 25vw">
+            <img src="media/stansbury-1600.jpg" srcset="media/stansbury-1600.jpg 1600w, media/stansbury-2400.jpg 2400w" sizes="(max-width:1023px) 100vw, 25vw" width="1600" height="1067" loading="lazy" decoding="async" alt="Cooper setting the boot pack up a snowy couloir in the Stansbury Range">
+          </picture>
+          <figcaption class="mono"><span>Stansbury Range · 40.46°N 112.63°W · 2900 M</span><span>Cooper, graciously setting the boot pack</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="writing">
+  <div class="rule mono"><span class="lab">Writing</span><span class="ro">shanehaynes.substack.com</span></div>
+  <div class="g">
+    <div class="voice">
+      <h2>Ideas are hypotheses; writing is how I test them</h2>
+      <p>I write about philosophy, technology, and the odd shapes of social life. Writing is where what the mountains and the work teach me gets put into words and released, and where the reader gets to talk back.</p>
+      <div class="links">
+        <a class="lnk" href="https://shanehaynes.substack.com" rel="me">Read on Substack</a>
+      </div>
+    </div>
+    <div class="ev">
+      <ul class="es">
+        <li><a href="https://shanehaynes.substack.com/p/two-masks-one-face"><span class="d">2026-06</span><span class="t">Two Masks, One Face</span></a></li>
+        <li><a href="https://shanehaynes.substack.com/p/morning-lark"><span class="d">2025-10</span><span class="t">Morning Lark</span></a></li>
+        <li><a href="https://shanehaynes.substack.com/p/letting-go-of-forever"><span class="d">2025-10</span><span class="t">Letting Go of Forever</span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="close" id="close">
+  <p class="say">If these conversations interest you, I'm always open to continuing them.</p>
+  <div class="links">
+    <a class="lnk contact" href="mailto:shane.haynes@yale.edu">Write to me</a>
+    <a class="lnk" href="https://www.linkedin.com/in/shane-haynes" rel="me">LinkedIn</a>
+    <a class="lnk" href="https://shanehaynes.substack.com" rel="me">Substack</a>
+    <a class="lnk" href="https://github.com/shanehaynes" rel="me">GitHub</a>
+  </div>
+  <p class="ro mono">Shane Haynes · 2026</p>
+</footer>
 
 <script>
-  // Function for typing effect (unchanged from your code)
-  function typeEffect(element, text, speed, callback) {
-    let i = 0;
-    function typing() {
-      if (i < text.length) {
-        element.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typing, speed);
-      } else if (callback) {
-        // Small delay before calling callback
-        setTimeout(callback, 600);
-      }
-    }
-    typing();
-  }
-
-  // Function to fade in an element (unchanged from your code)
-  function fadeIn(element, duration) {
-    element.style.opacity = 0;
-    element.style.display = "block"; // Ensure the element is visible
-    let opacity = 0;
-    const increment = 50 / duration; // Adjusts fade speed
-
-    function animate() {
-      opacity += increment;
-      if (opacity >= 1) {
-        element.style.opacity = 1;
-      } else {
-        element.style.opacity = opacity;
-        requestAnimationFrame(animate);
-      }
-    }
-    animate();
-  }
-
-  /**
-   * NEW: Type multiple strings in sequence, with a delay after each.
-   * @param {HTMLElement} element - The element to type into.
-   * @param {string[]} strings - An array of strings to type in sequence.
-   * @param {number} speed - Milliseconds between each character typed.
-   * @param {number} delayBetween - Delay in ms between finishing one string & starting the next.
-   * @param {Function} callback - Called after all strings have been typed.
-   */
-  function typeMultipleStrings(element, strings, speed, delayBetween, callback) {
-    let currentIndex = 0;
-
-    function typeNextString() {
-      // If we've exhausted all strings, trigger callback & stop
-      if (currentIndex >= strings.length) {
-        if (callback) callback();
-        return;
-      }
-
-      // Type the current string
-      const currentString = strings[currentIndex];
-      typeEffect(element, currentString, speed, function () {
-        // (Optional) Add a separator between strings if you want 
-        // the same line with “ | ”. Remove this if you don't need it.
-        if (currentIndex < strings.length - 1) {
-          element.innerHTML += " | "; 
-        }
-
-        // After typing one string, wait briefly, then type the next
-        currentIndex++;
-        setTimeout(typeNextString, delayBetween);
-      });
-    }
-
-    typeNextString();
-  }
-
-  // When the page loads, start typing each phrase in turn, then fade in the description
-  document.addEventListener("DOMContentLoaded", function () {
-    const subtitle = document.querySelector(".hero-subtitle");
-    const description = document.querySelector(".hero-description");
-
-    // Clear existing text and hide description initially
-    subtitle.innerHTML = "";
-    description.style.opacity = 0;
-
-    // Call our new function with multiple strings
-    typeMultipleStrings(
-      subtitle,
-      [
-        "Analytical Strategist",
-        "Systems Architect",
-        "Insatiable Learner"
-      ],
-      /* speed of typing each character */ 40,
-      /* delay (ms) after each phrase */ 300,
-      /* callback once all phrases typed */ function () {
-        fadeIn(description, 2000); // e.g. fade in over 2s
-      }
-    );
-  });
+(function(){
+  var b=document.body,h=document.getElementById('hero'),v=document.getElementById('hold');
+  function f(){b.classList.toggle('scrolled',window.scrollY>h.offsetHeight*0.55);}
+  addEventListener('scroll',f,{passive:true});f();
+  if(v&&matchMedia('(prefers-reduced-motion: reduce)').matches){v.pause();v.removeAttribute('autoplay');}
+})();
 </script>
-
 </body>
 </html>
