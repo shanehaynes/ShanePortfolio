@@ -1,0 +1,11 @@
+# GitHub Pages builds this repo with Jekyll. Without this file, Jekyll copies and
+# renders everything it finds, which published the internal working copy in
+# content/ and these agent notes at /content/career.md, /CLAUDE.html, and so on.
+#
+# Excluding a path removes it from the build entirely: no raw source file, no
+# rendered .html. Dot-folders such as .claude/ are skipped by Jekyll already.
+#
+# Note: setting `exclude` replaces Jekyll's default exclude list. That list only
+# names Ruby build paths (Gemfile, vendor/, node_modules/), none of which exist
+# here, so nothing is lost by overriding it.
+exclude: [content, CLAUDE.md]
