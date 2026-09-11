@@ -60,16 +60,6 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
 .index a:hover,.index a:focus-visible{color:var(--signal);}
 .scrolled .index{opacity:1;transform:none;pointer-events:auto;}
 
-/* turn prompt: portrait touch phones only */
-.turn{display:none;}
-@media (max-width:640px) and (orientation:portrait) and (hover:none) and (pointer:coarse){
-  .turn{display:block;position:fixed;z-index:30;top:max(14px,env(safe-area-inset-top));left:var(--inset);right:var(--inset);
-    padding:11px 14px;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);
-    background:rgba(11,15,20,.78);border:1px solid var(--rule);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-    opacity:0;animation:turn 9s ease forwards .9s;}
-  @keyframes turn{0%{opacity:0;transform:translateY(-6px)}7%{opacity:1;transform:none}82%{opacity:1}100%{opacity:0;visibility:hidden}}
-}
-
 /* sections: a rule with a label on it, voice left, evidence right */
 .sec{border-top:1px solid var(--rule);padding:0 0 var(--pad) var(--inset);}
 .sec .rule{display:flex;justify-content:space-between;gap:16px;padding:14px var(--inset) 0 0;max-width:var(--max);}
@@ -164,6 +154,4 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
   html{scroll-behavior:auto;}
   .hero video{display:none;}
   .index,.lnk,.index a,.es a{transition:none;}
-  .turn{animation:turnstill 9s linear forwards .9s;}
-  @keyframes turnstill{0%{opacity:0}5%{opacity:1}85%{opacity:1}100%{opacity:0;visibility:hidden}}
 }
