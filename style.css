@@ -48,9 +48,12 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
 .id{position:absolute;z-index:4;left:var(--inset);bottom:clamp(28px,8vh,88px);max-width:70vw;}
 .name{font-weight:500;font-size:clamp(2.6rem,6.2vw,5.6rem);line-height:.95;letter-spacing:-.025em;text-wrap:balance;}
 .role{margin:.7em 0 0 .08em;font-weight:400;font-size:clamp(.78rem,1.05vw,.95rem);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);}
-.readout{position:absolute;z-index:4;right:clamp(20px,4vw,56px);bottom:clamp(20px,4vh,40px);text-transform:uppercase;
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--ink-dim);opacity:.42;
-  display:flex;flex-direction:column;align-items:flex-end;gap:.35em;text-align:right;line-height:1.2;font-variant-numeric:tabular-nums;}
+.readout{position:absolute;z-index:4;right:clamp(20px,4vw,56px);bottom:clamp(20px,4vh,40px);
+  display:flex;flex-direction:column;align-items:flex-end;gap:.45em;text-align:right;}
+.readout .credit{font-family:var(--display);font-weight:400;font-size:clamp(.78rem,1.05vw,.9rem);
+  letter-spacing:.005em;line-height:1.25;color:var(--ink);}
+.readout .data{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+  line-height:1.2;color:var(--ink-dim);opacity:.42;font-variant-numeric:tabular-nums;}
 
 /* index: hidden until the reader has left the hero */
 .index{position:fixed;top:0;left:0;right:0;z-index:20;padding:18px var(--inset) 28px;display:flex;gap:1.6em;
