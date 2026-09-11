@@ -8,3 +8,6 @@
 # OS / editor noise
 .DS_Store
 Thumbs.db
+
+# 58 MB of trip photos: source material for the hero pipeline, not site assets.
+images/reference/
