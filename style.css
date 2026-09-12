@@ -129,6 +129,13 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
 .rec .pnl .r em{font-style:normal;color:var(--ink-body);display:block;margin-top:.25em;font-size:.95rem;}
 .rec .pnl .r .lnk{display:inline-block;margin-top:.55em;overflow-wrap:anywhere;}
 
+/* not found: the hero's frame, no video. .veil, .id and .readout are reused as-is. */
+.lost{position:relative;min-height:100svh;background:var(--ground) url("media/hero-poster.jpg") center/cover no-repeat;}
+.lost .veil{background:linear-gradient(180deg,rgba(11,15,20,.32) 0%,rgba(11,15,20,.18) 38%,rgba(11,15,20,.88) 100%);}
+.lost .id{max-width:min(52ch,84vw);}
+.lost .say{font-weight:500;font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.04;letter-spacing:-.02em;text-wrap:balance;}
+.lost .note{margin:.7em 0 1.3em;max-width:42ch;color:var(--ink-body);font-size:1.0625rem;}
+
 /* responsive */
 @media (max-width:1023px){
   .g{grid-template-columns:1fr;gap:36px;}
