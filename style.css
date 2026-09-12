@@ -39,6 +39,8 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
 .lnk{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);
   border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color .2s,border-color .2s;}
 .lnk:hover,.lnk:focus-visible{color:var(--signal);border-color:var(--signal);}
+.contact{color:var(--signal);border-color:var(--signal);text-transform:none;letter-spacing:.02em;}
+.contact:hover,.contact:focus-visible{color:var(--ink);border-color:var(--ink);}
 
 /* hero */
 .hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:var(--ground) url("media/hero-poster.jpg") center/cover no-repeat;}
@@ -113,9 +115,7 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
 .close{border-top:1px solid var(--rule);padding:clamp(48px,8vh,96px) var(--inset) clamp(40px,6vh,72px);
   display:grid;grid-template-columns:minmax(0,7fr) minmax(24px,1fr) minmax(0,4fr);gap:24px 0;align-items:end;max-width:calc(var(--max) + var(--inset));}
 .close .say{grid-column:1;max-width:44ch;font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.3;letter-spacing:-.01em;text-wrap:balance;}
-.close .links{grid-column:1;}
-.close .contact{color:var(--signal);border-color:var(--signal);}
-.close .contact:hover,.close .contact:focus-visible{color:var(--ink);border-color:var(--ink);}
+.close .reach{grid-column:1;display:grid;justify-items:start;gap:14px;}
 .close .ro{grid-column:3;grid-row:1/3;align-self:end;text-align:right;}
 
 /* record page */
@@ -127,7 +127,7 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
 .rec .pnl{border-top:0;margin-right:0;max-width:72ch;}
 .rec .pnl .r{color:var(--ink);}
 .rec .pnl .r em{font-style:normal;color:var(--ink-body);display:block;margin-top:.25em;font-size:.95rem;}
-.rec .pnl .r .lnk{display:inline-block;margin-top:.55em;}
+.rec .pnl .r .lnk{display:inline-block;margin-top:.55em;overflow-wrap:anywhere;}
 
 /* responsive */
 @media (max-width:1023px){
@@ -140,6 +140,7 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
 @media (max-width:639px){
   .id{bottom:96px;}
   .sec .rule{flex-direction:column;align-items:stretch;gap:6px;}
+  .rec .top{flex-direction:column;align-items:stretch;}
   .ph{grid-template-columns:1fr;margin-left:calc(-1 * var(--inset));}
   .ph figure.wide img{aspect-ratio:3/2;}
   .ph figcaption{padding-left:var(--inset);}
