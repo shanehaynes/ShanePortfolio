@@ -6,6 +6,13 @@
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;
   src:url("fonts/ibm-plex-mono-latin.woff2") format("woff2");
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+/* Google's latin subset above declares U+2191 and U+2193 but not U+2192, so every
+   "2026 → 2028" fell through to whatever mono the OS supplies. This is that one
+   glyph, subset from upstream Plex Mono 2.3 at the same 600/1000 advance as the
+   digits, inlined so it costs no request. The files in fonts/ are untouched. */
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;
+  unicode-range:U+2192;
+  src:url("data:font/woff2;base64,d09GMgABAAAAAAQAABAAAAAAB+QAAAOrAAIAxAAAAAAAAAAAAAAAAAAAAAAAAAAAGyAcMAZgADQIQAmCcxEQClRpATYCJAMGCwYABCAFgnoHIAyDNBvdBgieA+7O0GKY0sY4sQxhoFBv5uPha9re3yy12yvuskZQmyzNCIg/jQNjEDaDQpmiHPEhnft3kbbB9YKopkUtQUWGCYYxbKF8sZm/LOKjeAmW9wF2nkkaSD4d0XDJL+r/98dKf8zbogLcphVfw6WKBuoCXOO6TqoQOTpwuOccJMIpRZSMMefZ0aMFmOXDD9k3ldfDgAM6CxATRonB/p7LWZoehd/tmh2HXwY7OCeZXOIhvSUZcGZ3jSdkRbJBYKx5gWdYaA6gHlVz0hWUPBM/6Aky+f+VHMQZEEDKjBn0sCCBFa5jEXkOBRmRfP93Fv6A3wkQwJYskmTNCsybZnQsRIlajWC+S2MTJdDFCOMqNCWXONgkM3rzMS2U0QjX8m2Q81stLHstpLojYJ/bozWkUGocktTojNYwRUNGonMvtlCTWgWbauVAhR73jk96j3smOtjVq+bgppm4Vt/xbSxV1e0QVdWvqG4r3qOhT1EyojVcHc3u41sM0OEiOqyhk/yLbvGljKpVSLVcI6tjybuZpV4jitSoflfL57DkLQ4NuXQba2xibchjd6z36EZkN5SZ69i8TXnKe3PTgaI65qL38VDxl2medaUByPNpisNVsHH4Nq9nzJuH1ftBfVWLW/HW/wEpWiOUsjrZKHmLohINgmVgxQHfWSwBEiCDAEtgE0AGWyCWenKaqtzqbYhtg3tlY27D3FnX0ODJdPDVUnUHz3g2NFgeHraAL4Q9h3RKxz09hg5Xx8WDgOTV4u17Xod91jeDwH4AfrIqC/B35XP379Jh7gDMYAABn9eTbkLIEoT6uUgyKF8EpPiJCEN0CGAWEvYTi4ApzVgkC4A78MSEl2Yxw86smJVmW8yJYBbz3Lx5Sp0QvxWaMGnJtCEDBs2iEsSJl4oqUaACDf912qQYVL5Ro2jSNuNa+izuq57Xp1dMxVtVG9VnEVVhwrgJtfoMmDOqy7QEMRJl5oyOMW/kBdE46ppFVGyN+8VmDMXsdPEklvlYSrVuFlkgnKWFmhlhjamJmQ3mBj+9jyRVJH/OYLp+ylaeZOH8OL0cgKeIVmUyRXCbXotRo1CSEB5YYQ1qkEQUP1zHyZEgAuUC3bxqBRIF163TiRXKjzsbWKcXL0QgVw5QMaiUJ66g9DpBhABenFnDOitXFrQpEAaK1srkiFsJMzsCfa3BL1JjlscJaSxxQK+QC3kwCTfEwdHESUNdHLkI13ADr2FSMMGN28nD+uJTD2IPjQbpNQ==") format("woff2");}
 @font-face{font-family:"Archivo Fallback";src:local("Helvetica Neue"),local("Arial");size-adjust:104%;ascent-override:92%;descent-override:22%;}
 
 :root{
