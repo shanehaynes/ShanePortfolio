@@ -1,0 +1,37 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/hooks/bash-guard.mjs\""
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(scripts/git-new.sh:*)",
+      "Bash(scripts/git-tidy.sh)",
+      "Bash(scripts/port.sh:*)",
+      "Bash(scripts/serve.sh:*)",
+      "Bash(scripts/check.sh:*)",
+      "Bash(scripts/media-drift.sh:*)",
+      "Bash(scripts/combine-check.sh:*)",
+      "Bash(scripts/supervisor-report.sh:*)",
+      "Bash(scripts/with-media-lock.sh:*)",
+      "Bash(node --test:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git worktree list:*)",
+      "Bash(git fetch:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr checks:*)"
+    ]
+  }
+}

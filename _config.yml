@@ -8,4 +8,4 @@
 # Note: setting `exclude` replaces Jekyll's default exclude list. That list only
 # names Ruby build paths (Gemfile, vendor/, node_modules/), none of which exist
 # here, so nothing is lost by overriding it.
-exclude: [content, CLAUDE.md]
+exclude: [content, CLAUDE.md, CONTRIBUTING.md, scripts, dev]

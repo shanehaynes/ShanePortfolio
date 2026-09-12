@@ -11,3 +11,9 @@ Thumbs.db
 
 # 58 MB of trip photos: source material for the hero pipeline, not site assets.
 images/reference/
+
+# Parallel-session infrastructure (scripts/git-new.sh). Machine-local, never committed:
+# worktrees are checkouts of this same repo, and state/ holds claims, locks and the
+# halt switch, whose contents are absolute paths on one machine.
+.claude/worktrees/
+.claude/state/
