@@ -5,7 +5,11 @@
 # Excluding a path removes it from the build entirely: no raw source file, no
 # rendered .html. Dot-folders such as .claude/ are skipped by Jekyll already.
 #
+# images/ holds the camera originals the media/ downscales came from. Nothing on
+# the site links to them, but Pages was serving all 31 MB of them -- a single
+# request for /images/jordanCowboy.jpeg returned 8.9 MB. They stay in the repo.
+#
 # Note: setting `exclude` replaces Jekyll's default exclude list. That list only
 # names Ruby build paths (Gemfile, vendor/, node_modules/), none of which exist
 # here, so nothing is lost by overriding it.
-exclude: [content, CLAUDE.md, CONTRIBUTING.md, scripts, dev]
+exclude: [content, CLAUDE.md, CONTRIBUTING.md, scripts, dev, images]
