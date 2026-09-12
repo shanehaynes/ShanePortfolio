@@ -42,7 +42,9 @@ export const HELD = [
   ["scripts/merge-policy.mjs", "this policy -- the thing deciding the merge"],
   ["scripts/merge-babysit.sh", "the merge actor"],
   ["scripts/", "every script the settings allow-list lets a session run unprompted"],
-  ["dev/", "the port resolver; a wrong answer here routes a session to another session's site"],
+  ["dev/", "the port resolver and the gate; a wrong answer here routes a session to another session's site, or passes a build that is broken"],
+  ["dev/port.mjs", "the port resolver; a wrong answer here routes a session to another session's site"],
+  ["dev/site-checks.mjs", "the checks the gate runs; weakening one makes every later green meaningless"],
 
   // --- CI and publish configuration ------------------------------------------
   // _config.yml is this repo's CI config in everything but name: it is the
