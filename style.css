@@ -56,7 +56,6 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
   letter-spacing:.005em;line-height:1.25;color:var(--ink);}
 .readout .data{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
   line-height:1.2;color:var(--ink-dim);opacity:.42;font-variant-numeric:tabular-nums;}
-.id .line{margin:1em 0 0 .08em;font-size:clamp(.95rem,1.15vw,1.0625rem);line-height:1.4;color:var(--ink-body);}
 
 /* index: hidden until the reader has left the hero */
 .index{position:fixed;top:0;left:0;right:0;z-index:20;padding:18px var(--inset) 28px;display:flex;gap:1.6em;

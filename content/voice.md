@@ -31,6 +31,7 @@ who cannot trace a sentence to one of the three files does not write it.
 - On every page `meta name="description"` and `og:description` are byte-identical; `meta.md` is their source.
 
 ## Decisions (dated)
+- 2026-09-13: the hero carries the name and tagline only. The "I build production AI systems. Yale MBA, class of 2028." line was added and then removed the same day.
 - 2026-09-13: the Work section may state the question Shane keeps returning to (where AI should act and where a person should decide) and tie it to the Apex coach.
 - 2026-09-13: Philosophy may state one axiom or none; Shane will choose from variants (none / evidence-not-verdict / think-commit-silence-obedience-joy).
 - 2026-09-13: numbers on `record.html` only, as above.
@@ -39,7 +40,7 @@ who cannot trace a sentence to one of the three files does not write it.
 - 2026-09-11: hero corner credits the frame as AI-generated; contact shows the address; no landscape prompt on phones.
 
 ## Picks, 2026-09-13 (from the blind regression read; twelve readers, six briefs)
-- Hero: add the line "I build production AI systems. Yale MBA, class of 2028." under the tagline, in the body face.
+- Hero: add the line "I build production AI systems. Yale MBA, class of 2028." under the tagline, in the body face. Reversed later that day; see Decisions.
 - Philosophy: paragraph 1 ends with the essay's axiom, "One of my own: a result is evidence about the work, not a verdict on me." The Lily-book sequence stays unstated.
 - Work: concrete first. Opens on the expense-reimbursement build, then the arc, then "I trained my successors."; "Now, an MBA at Yale, to widen the scope of what I can own."; the section closes on "I keep returning to one question: where AI should act and where a person should decide. The coach I built for Apex Training proposes changes to a workout plan; the user decides." Panel: 2025 subline "Expense reimbursement automation"; new row "2026 → · Apex Training · Calendar with an AI coach" linking the repository.
 - Mountains: heading and paragraph 1 unchanged; paragraph 2 says "even when it is behind thick cloud or fog." and ends on "I keep going back to places that would not notice if I stopped."; the Zion caption reads "Jordan, the 5.7 pitch, 2000 ft above the canyon floor".
