@@ -130,8 +130,8 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
 .rec .pnl{border-top:0;margin-right:0;max-width:72ch;}
 .rec .pnl .r{color:var(--ink);}
 .rec .pnl .r em{font-style:normal;color:var(--ink-body);display:block;margin-top:.25em;font-size:.95rem;}
-.rec .pnl .r .lnk{display:inline-block;margin-top:.55em;overflow-wrap:anywhere;}
-.rec .pnl .r .lnk + .lnk{margin-left:1.25em;}
+.rec .pnl .r .lnk{display:inline-block;margin-top:.55em;margin-right:1.25em;overflow-wrap:anywhere;}
+.rec .pnl .r .lnk:last-child{margin-right:0;}
 
 /* responsive */
 @media (max-width:1023px){
