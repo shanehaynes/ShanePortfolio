@@ -15,7 +15,7 @@
 // pattern here; the regexes are easy to widen by accident.
 
 import { statSync } from "node:fs";
-import { dirname, join, resolve, sep } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
 const OVERRIDE = "PORTFOLIO_DESTRUCTIVE_OK=1";
@@ -47,7 +47,7 @@ export function checkoutKind(startDir, fsImpl = { statSync }) {
 // --- command parsing ---------------------------------------------------------
 
 /**
- * Literal `cd` targets in a command string.
+ * Every literal `cd` in a command string, with where in the string it sits.
  *
  * `cd "$PRIMARY" && git commit` is skipped rather than guessed at: the guard
  * cannot know what the variable holds, and blocking on a maybe is how a guard
@@ -55,7 +55,7 @@ export function checkoutKind(startDir, fsImpl = { statSync }) {
  * classified. The cost is that a determined session can route around this one
  * check; the check exists to catch the ordinary mistake, not the deliberate one.
  */
-export function literalCdTargets(command) {
+export function cdSteps(command) {
   const out = [];
   // cd, then either a "quoted path", a 'quoted path', or a bare run of
   // non-separator characters.
@@ -65,7 +65,82 @@ export function literalCdTargets(command) {
     const target = m[1] ?? m[2] ?? m[3];
     if (!target) continue;
     if (target.includes("$") || target.includes("`")) continue; // unexpanded
-    out.push(target);
+    out.push({ target, index: m.index });
+  }
+  return out;
+}
+
+/** The targets alone. */
+export function literalCdTargets(command) {
+  return cdSteps(command).map((s) => s.target);
+}
+
+/**
+ * The directory the shell is standing in when it reaches `index` in the
+ * command: cwd, then every literal cd before that point applied in order, a
+ * relative one taken from wherever the previous cd left off. The last cd
+ * wins, as in a shell. A cd after the point has not happened yet.
+ */
+export function dirAt(command, cwd, index = Infinity) {
+  let dir = cwd;
+  for (const step of cdSteps(command)) {
+    if (step.index > index) break;
+    dir = resolve(dir, step.target);
+  }
+  return dir;
+}
+
+/** Global git options that take their value as the next word. */
+const GIT_VALUE_OPTS = new Set(["--git-dir", "--work-tree", "--namespace", "--super-prefix", "--config-env"]);
+
+/**
+ * Every `git` invocation in a command: its literal `-C` targets, the verb
+ * that follows the global options, and that verb's arguments.
+ *
+ * `git -C <path> commit` runs in <path>, not where the shell is standing, so
+ * the primary-checkout rule has to read it, in both directions. Before this
+ * existed, `git -C <primary> commit` from a worktree slipped through, because
+ * the pattern wanted `git` directly followed by `commit`. The other global
+ * options git takes before the verb (`-c k=v`, `--no-pager`, `--git-dir=..`)
+ * are stepped over for the same reason. An unexpanded `-C "$DIR"` is dropped,
+ * exactly as cdSteps drops `cd "$DIR"`.
+ */
+export function gitInvocations(command) {
+  const out = [];
+  const word = /\bgit(?=\s)/g;
+  // A token is a "quoted", 'quoted' or bare run on the same line; a shell
+  // separator ends the invocation.
+  const token = /[ \t]*(?:"([^"]*)"|'([^']*)'|([^\s;&|<>()]+))/y;
+  let m;
+  while ((m = word.exec(command)) !== null) {
+    const tokens = [];
+    token.lastIndex = m.index + 3;
+    let t;
+    while ((t = token.exec(command)) !== null) {
+      tokens.push(t[1] ?? t[2] ?? t[3]);
+      // Resume the search for the next `git` after this one's arguments, so a
+      // commit message that mentions git is not read as a second invocation.
+      word.lastIndex = token.lastIndex;
+    }
+    const dirs = [];
+    let subcommand = null;
+    let i = 0;
+    for (; i < tokens.length; i++) {
+      const tk = tokens[i];
+      if (tk === "-C" || tk === "-c" || GIT_VALUE_OPTS.has(tk)) {
+        const v = tokens[++i];
+        if (tk === "-C" && v && !/[$`]/.test(v)) dirs.push(v);
+      } else if (tk.startsWith("-C")) {
+        if (!/[$`]/.test(tk)) dirs.push(tk.slice(2)); // -C<path>, no space
+      } else if (tk.startsWith("-")) {
+        // -c<k=v>, --git-dir=<x>, -p, --no-pager, --bare: no directory in them
+      } else {
+        subcommand = tk;
+        break;
+      }
+    }
+    if (subcommand === null) continue;
+    out.push({ subcommand, args: tokens.slice(i + 1), dirs, index: m.index });
   }
   return out;
 }
@@ -97,17 +172,8 @@ export function decide(input) {
 
   const cwd = input.cwd ?? process.cwd();
   const fsImpl = input.fsImpl ?? { statSync };
-  const { assignments, rest } = splitLeadingAssignments(command);
+  const { assignments } = splitLeadingAssignments(command);
   const overridden = assignments.some((a) => a === OVERRIDE);
-
-  // Where will this actually run? The last literal `cd` wins, as in a shell.
-  const cdTargets = literalCdTargets(command);
-  const effectiveDirs = [cwd, ...cdTargets.map((t) => (t.startsWith(sep) ? t : resolve(cwd, t)))];
-
-  const anyPrimary = effectiveDirs.some((d) => {
-    const k = checkoutKind(d, fsImpl);
-    return k ? k.primary : false;
-  });
 
   // 1. pkill / killall on a process name every session is running ------------
   //
@@ -172,37 +238,53 @@ export function decide(input) {
   // the shared state -- the claims file, the lock, the 8.6 GB pipeline -- and
   // a session that commits there has put its work somewhere every other
   // session's scripts assume is stable.
-  if (anyPrimary) {
-    // (?![-\w]) and not \b: \b matches at a hyphen, so /git\s+merge\b/ also
-    // matches `git merge-base` and /git\s+commit\b/ matches `git commit-tree`.
-    // Both of those are read-only plumbing -- merge-base answers a question and
-    // commit-tree writes an object nothing points at -- and blocking them
-    // stopped a repair mid-incident before this was fixed.
-    const writes = [
-      [/\bgit\s+commit(?![-\w])/, "git commit"],
-      [/\bgit\s+merge(?![-\w])(?![^\n]*--abort)/, "git merge"],
-      [/\bgit\s+rebase(?![-\w])/, "git rebase"],
-      [/\bgit\s+cherry-pick(?![-\w])/, "git cherry-pick"],
-      [/\bgit\s+add(?![-\w])/, "git add"],
-      [/\bgit\s+apply(?![-\w])/, "git apply"],
-      [/\bffmpeg\b/, "ffmpeg"],
-      [/\bcodex\s+exec\b/, "codex exec"],
-    ];
-    for (const [re, label] of writes) {
-      if (re.test(rest) || re.test(command)) {
-        return [
-          `Blocked: ${label} in the primary checkout.`,
-          `The primary checkout stays on the default branch, clean. It is what every`,
-          `other session's tooling reads for shared state, and it is the one place`,
-          `whose contents nobody expects to change under them.`,
-          ``,
-          `Cut a worktree and work there:`,
-          `    scripts/git-new.sh <type>/<slug> "what you will touch"`,
-          ``,
-          `If you are already in one, you have a literal \`cd\` back to the primary`,
-          `checkout somewhere in this command.`,
-        ].join("\n");
-      }
+  //
+  // Each command is judged where it will actually run, not where the shell
+  // started: the last literal cd before it wins, as in a shell, and `git -C`
+  // moves a git command once more on top of that. An earlier version blocked
+  // if ANY directory in the chain was the primary, so a session standing in
+  // the primary checkout could not follow this guard's own advice -- cut a
+  // worktree, cd into it, commit there.
+  const inPrimary = (dir) => {
+    const k = checkoutKind(dir, fsImpl);
+    return k ? k.primary : false;
+  };
+  const blockedInPrimary = (label) => [
+    `Blocked: ${label} in the primary checkout.`,
+    `The primary checkout stays on the default branch, clean. It is what every`,
+    `other session's tooling reads for shared state, and it is the one place`,
+    `whose contents nobody expects to change under them.`,
+    ``,
+    `Cut a worktree and work there:`,
+    `    scripts/git-new.sh <type>/<slug> "what you will touch"`,
+    ``,
+    `If you are already in a worktree, this command steps back into the primary`,
+    `checkout with a literal \`cd\` or \`git -C\`. If you named the worktree through`,
+    `a shell variable instead, spell the path out: the guard reads literal paths only.`,
+  ].join("\n");
+
+  // The verb is compared whole, so `git merge-base` is not `git merge` and
+  // `git commit-tree` is not `git commit`. Both are read-only plumbing --
+  // merge-base answers a question, commit-tree writes an object nothing points
+  // at -- and a pattern that blocked them stopped a repair mid-incident once.
+  const gitWrites = new Map([
+    ["commit", "git commit"],
+    ["merge", "git merge"],
+    ["rebase", "git rebase"],
+    ["cherry-pick", "git cherry-pick"],
+    ["add", "git add"],
+    ["apply", "git apply"],
+  ]);
+  for (const inv of gitInvocations(command)) {
+    const label = gitWrites.get(inv.subcommand);
+    if (!label) continue;
+    if (inv.subcommand === "merge" && inv.args.includes("--abort")) continue; // a recovery, not a build
+    const dir = inv.dirs.reduce((d, t) => resolve(d, t), dirAt(command, cwd, inv.index));
+    if (inPrimary(dir)) return blockedInPrimary(label);
+  }
+  for (const [re, label] of [[/\bffmpeg\b/g, "ffmpeg"], [/\bcodex\s+exec\b/g, "codex exec"]]) {
+    for (const m of command.matchAll(re)) {
+      if (inPrimary(dirAt(command, cwd, m.index))) return blockedInPrimary(label);
     }
   }
 
