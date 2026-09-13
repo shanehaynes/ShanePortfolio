@@ -37,3 +37,13 @@ who cannot trace a sentence to one of the three files does not write it.
 - 2026-09-13: Mountains heading unchanged.
 - 2026-09-13: a one-line colophon about how the site was made is to be drafted for Shane's decision, not assumed.
 - 2026-09-11: hero corner credits the frame as AI-generated; contact shows the address; no landscape prompt on phones.
+
+## Picks, 2026-09-13 (from the blind regression read; twelve readers, six briefs)
+- Hero: add the line "I build production AI systems. Yale MBA, class of 2028." under the tagline, in the body face.
+- Philosophy: paragraph 1 ends with the essay's axiom, "One of my own: a result is evidence about the work, not a verdict on me." The Lily-book sequence stays unstated.
+- Work: concrete first. Opens on the expense-reimbursement build, then the arc, then "I trained my successors."; "Now, an MBA at Yale, to widen the scope of what I can own."; the section closes on "I keep returning to one question: where AI should act and where a person should decide. The coach I built for Apex Training proposes changes to a workout plan; the user decides." Panel: 2025 subline "Expense reimbursement automation"; new row "2026 → · Apex Training · Calendar with an AI coach" linking the repository.
+- Mountains: heading and paragraph 1 unchanged; paragraph 2 says "even when it is behind thick cloud or fog." and ends on "I keep going back to places that would not notice if I stopped."; the Zion caption reads "Jordan, the 5.7 pitch, 2000 ft above the canyon floor".
+- Writing: "The rest is not. Once an idea is published, other people push on it, and they find out with me whether it holds or breaks. Kept to myself, it goes on feeling whole." No scope line.
+- Close: Shane's wording, "Send me a problem worth solving, or an argument you think has a hole in it." ("owning" rejected: it read as taking a problem over.)
+- Colophon, adopted: "I made this site with AI agents. The photographs are mine; the opening landscape is generated." — a dim line in the footer, under the contact links.
+- Record: variant B (life-order Eide Bailly row with the permitted numbers; one Goff honour, TA 2022 → 2024, guest lecturer since 2024; SOAR glossed in words; WILD cut; Apex links repository first, app marked sign-in). Index panel: Goff row "2022 · Teaching Assistant, Goff Strategic Leadership Institute · Guest lecturer on leadership and AI"; Cybersecurity row "2023 · Future Consultant in Cybersecurity Automation, Eide Bailly · Agentic prototype for bank security operations".
