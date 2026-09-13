@@ -107,3 +107,11 @@ Source: Shane's current résumé (Yale SOM format). Phone number deliberately om
 
 ## Site direction for this material (Shane, 2026-09-09)
 Keep the Work section abstract and motivation-focused, not STAR-style results: more about who he is and why he builds, less about the exact work. Metrics stay off the main page.
+
+## Confirmed by Shane, 2026-09-12 and 2026-09-13 (supersede anything above where they differ)
+- The question he keeps returning to, confirmed in his words: **where AI should act and where a person should decide.** It may be stated in Work and tied to the Apex coach, whose rule is that it proposes changes and makes none without the user's confirmation (apex-training README).
+- Goff Strategic Leadership **Institute** is the current name; "Center" above is out of date. **One honour:** "Goff Strategic Leader" and the "Strategic Leader Award" are the same honour, to be listed once. **Teaching Assistant 2022 → 2024** (about two years), not 2023 only. Guest lecturer on leadership and AI after graduating in 2024.
+- **Numbers:** measured adoption facts from the résumé block may appear on `record.html` only: 3,500 employees; 400 consulting partners; a team of four. The $8.3M projection appears nowhere. `index.html` stays number-free.
+- **"First production AI system" is singular** and means the expense reimbursement automation. The prospect-research system and the contract summarization agent were built; only the contract agent carries an adoption figure. Do not write "shipped" for the prospect-research system.
+- "Trained successors" is the résumé's wording for the upskilling program; use it as is.
+- Apex Training: public repository github.com/shanehaynes/apex-training; the app at apextrainingcalendar.vercel.app shows a sign-in screen to visitors, so link the repository first.

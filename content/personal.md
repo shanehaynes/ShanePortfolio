@@ -32,3 +32,10 @@ Photo: images/books.jpeg — The Brothers Karamazov, Dune, The Lily of the Field
 In my spare time, I read literature and study philosophy. Great works endure because they wrestle with the perenial [sic: perennial] conditions of being human — freedom, suffering, duty, meaning, love. I find myself in them frequently. Dostoevsky's The Brothers Karamazov and Herbert's Dune remain touchstones, while the existential clarity of Søren Kierkegaard and Albert Camus have deeply shaped my worldview.
 
 If these conversations interest you, I'm always open to continuing them.
+
+## Confirmed by Shane, 2026-09-12 and 2026-09-13
+- Zion caption: Jordan's pitch on Cowboy Ridge is about **2,000 ft above the canyon floor** (the old caption above); restore the height.
+- Axioms Shane holds, both true; whether to state either on the page is open: (a) **a result is evidence about the work, not a verdict on me** (compressed from his essay "Two Masks, One Face"); (b) after Kierkegaard: **think, then commit; after committing, be silent, be obedient, be joyful** (the three discourses of The Lily of the Field and the Bird of the Air).
+- The Mountains heading "No cathedral more sublime, no crucible more stern" is Shane's own line and stays verbatim.
+- Shane has been to the Wind River Range (Titcomb Basin, August 2023; images/TitcombBasin.jpeg is his photograph). "Wind River" in the Mountains readout is true.
+- The people in the photographs are his climbing and skiing partners Jordan and Cooper.
