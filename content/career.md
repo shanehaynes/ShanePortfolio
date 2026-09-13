@@ -118,3 +118,4 @@ Keep the Work section abstract and motivation-focused, not STAR-style results: m
 
 ## Substack archive, verified 2026-09-11 (from the publication's archive feed)
 Three posts, all public: "Two Masks, One Face" (2026-06-16, essay, subtitle "If victory cannot define you, neither can defeat"); "Morning Lark" (2025-10-14, a poem, subtitle "To every night a dawn. A poem."); "Letting Go of Forever" (2025-10-03, essay, subtitle "Resisting change is a form of self-negation"). None is about technology.
+- Apex Training dates: repository created June 2026 and in active development (last push 11 September 2026); on the site it is dated "2026 →".
