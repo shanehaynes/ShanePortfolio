@@ -115,3 +115,6 @@ Keep the Work section abstract and motivation-focused, not STAR-style results: m
 - **"First production AI system" is singular** and means the expense reimbursement automation. The prospect-research system and the contract summarization agent were built; only the contract agent carries an adoption figure. Do not write "shipped" for the prospect-research system.
 - "Trained successors" is the résumé's wording for the upskilling program; use it as is.
 - Apex Training: public repository github.com/shanehaynes/apex-training; the app at apextrainingcalendar.vercel.app shows a sign-in screen to visitors, so link the repository first.
+
+## Substack archive, verified 2026-09-11 (from the publication's archive feed)
+Three posts, all public: "Two Masks, One Face" (2026-06-16, essay, subtitle "If victory cannot define you, neither can defeat"); "Morning Lark" (2025-10-14, a poem, subtitle "To every night a dawn. A poem."); "Letting Go of Forever" (2025-10-03, essay, subtitle "Resisting change is a form of self-negation"). None is about technology.
