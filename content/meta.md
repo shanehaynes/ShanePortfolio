@@ -14,7 +14,7 @@ Identical-by-rule makes a one-sided edit visible in the diff.
 
     Shane Haynes builds production AI systems and teaches the people who own them next. MBA at Yale SOM, formerly Eide Bailly.
 
-"teaches the people who own them next" is lifted from the Work section, so the card
+"teaches the people who own them next" restates the record's upskilling sentence and Work's "I trained my successors", so the card
 still sounds like the site. All three disambiguators — AI systems, Yale SOM, Eide
 Bailly — land before Slack's clamp.
 
