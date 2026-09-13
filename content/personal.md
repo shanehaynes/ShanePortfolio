@@ -39,3 +39,8 @@ If these conversations interest you, I'm always open to continuing them.
 - The Mountains heading "No cathedral more sublime, no crucible more stern" is Shane's own line and stays verbatim.
 - Shane has been to the Wind River Range (Titcomb Basin, August 2023; images/TitcombBasin.jpeg is his photograph). "Wind River" in the Mountains readout is true.
 - The people in the photographs are his climbing and skiing partners Jordan and Cooper.
+
+## Photo captions as published (route names supplied by Shane 2026-09-11; coordinates and elevations are of the photographs' locations, not summits)
+- Zion: Cowboy Ridge, Mount Kinesava · 37.20°N 113.03°W · 2100 M — Jordan on the 5.7 hand crack, about 2,000 ft above the canyon floor.
+- Wasatch: Heaven's Half Pipe, Lone Peak · 40.52°N 111.75°W · 3350 M — Jordan skiing deep snow in a whiteout.
+- Stansbury: Twin Couloirs, Deseret Peak · 40.46°N 112.62°W · 3000 M — Cooper setting the boot pack.
