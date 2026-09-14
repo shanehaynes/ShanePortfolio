@@ -89,6 +89,18 @@ claims_file() { printf '%s\n' "$(state_dir)/claims.tsv"; }
 halt_file()   { printf '%s\n' "$(state_dir)/HALT"; }
 worktrees_dir() { printf '%s\n' "$(primary_dir)/.claude/worktrees"; }
 
+# The throwaway worktree merge-babysit.sh uses to bring one branch up to date.
+#
+# Flatten the BRANCH NAME only, then join it to the directory. An earlier
+# version flattened the joined path, which turned every '/' in the absolute
+# path into '-' too: "$PRIMARY/.claude/worktrees/.babysit-infra/x" came out as
+# "-home-shane-...-.babysit-infra-x", `rm -rf` read the leading '-' as an
+# option and died, and under set -e that ended the loop after the first merge
+# with every other branch left stale. Observed 2026-09-14, right after PR #22.
+babysit_tmp_dir() {
+  printf '%s/.babysit-%s\n' "$(worktrees_dir)" "$(printf '%s' "$1" | tr '/' '-')"
+}
+
 # Resolve the default branch from the remote rather than assuming "main", but
 # do not let a missing origin/HEAD stop the world.
 default_branch() {

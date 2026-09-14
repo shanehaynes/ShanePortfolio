@@ -124,17 +124,18 @@ while [ "$round" -lt "$MAX_ROUNDS" ]; do
           --jq '.[] | select(.baseRefName=="'"$DEFAULT"'") | .headRefName' 2>/dev/null || true)
   for br in $rest; do
     note "  bringing $br up to date (merge, not rebase)"
-    tmp="$PRIMARY/.claude/worktrees/.babysit-$br"
-    tmp=$(printf '%s' "$tmp" | tr '/' '-')
-    rm -rf "$tmp"
-    if git worktree add --quiet "$tmp" "$br" 2>/dev/null || git worktree add --quiet --track -b "$br" "$tmp" "origin/$br" 2>/dev/null; then
+    # The name is flattened in babysit_tmp_dir, not here, and every call that
+    # takes the path ends its options with -- first. See lib/common.sh.
+    tmp=$(babysit_tmp_dir "$br")
+    rm -rf -- "$tmp"
+    if git worktree add --quiet -- "$tmp" "$br" 2>/dev/null || git worktree add --quiet --track -b "$br" -- "$tmp" "origin/$br" 2>/dev/null; then
       if git -C "$tmp" merge --no-edit "origin/$DEFAULT" >/dev/null 2>&1; then
         git -C "$tmp" push --quiet origin "HEAD:$br" || warn "    push failed for $br"
       else
         git -C "$tmp" merge --abort 2>/dev/null || true
         warn "    ${C_YELLOW}$br conflicts with origin/$DEFAULT -- a human has to resolve it${C_OFF}"
       fi
-      git worktree remove "$tmp" 2>/dev/null || { rm -rf "$tmp"; git worktree prune; }
+      git worktree remove -- "$tmp" 2>/dev/null || { rm -rf -- "$tmp"; git worktree prune; }
     else
       warn "    could not check out $br"
     fi
