@@ -11,7 +11,7 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { decide, literalCdTargets, splitLeadingAssignments } from "./bash-guard.mjs";
+import { decide, dirAt, gitInvocations, literalCdTargets, splitLeadingAssignments } from "./bash-guard.mjs";
 
 const PRIMARY = "/home/u/Portfolio Web App";
 const WORKTREE = "/home/u/Portfolio Web App/.claude/worktrees/feat-x";
@@ -55,6 +55,46 @@ test("splitLeadingAssignments peels env prefixes", () => {
   const { assignments, rest } = splitLeadingAssignments("FOO=1 BAR=2 git status");
   assert.deepEqual(assignments, ["FOO=1", "BAR=2"]);
   assert.equal(rest, "git status");
+});
+
+test("dirAt folds the literal cds before a point in the command, as a shell would", () => {
+  assert.equal(dirAt("git commit", "/w"), "/w");
+  assert.equal(dirAt("cd /a && git commit", "/w"), "/a");
+  assert.equal(dirAt("cd /a && cd /b && git commit", "/w"), "/b");
+  assert.equal(dirAt("cd a && cd b && git commit", "/w"), "/w/a/b");
+  assert.equal(dirAt("cd .. && git commit", "/w/x"), "/w");
+  assert.equal(dirAt('cd "$X" && git commit', "/w"), "/w");
+  // A cd after the command has not happened yet when the command runs.
+  const c = "cd /a && git commit && cd /b";
+  assert.equal(dirAt(c, "/w", c.indexOf("git")), "/a");
+  assert.equal(dirAt(c, "/w"), "/b");
+});
+
+test("gitInvocations reads -C targets and the verb after the global options", () => {
+  assert.deepEqual(gitInvocations('git -C "/a b" commit -m x'), [
+    { subcommand: "commit", args: ["-m", "x"], dirs: ["/a b"], index: 0 },
+  ]);
+  const shape = (c) => gitInvocations(c).map((i) => [i.subcommand, i.dirs, i.args]);
+  assert.deepEqual(shape("git -C a -C b -c k=v --no-pager status"), [["status", ["a", "b"], []]]);
+  assert.deepEqual(shape("git --git-dir /x/.git -C /y log -1"), [["log", ["/y"], ["-1"]]]);
+  assert.deepEqual(shape("git status && git -C /x log -1 | head"), [
+    ["status", [], []],
+    ["log", ["/x"], ["-1"]],
+  ]);
+  assert.deepEqual(shape("git status\ngit -C /x commit"), [
+    ["status", [], []],
+    ["commit", ["/x"], []],
+  ]);
+  assert.deepEqual(shape("echo $(git rev-parse HEAD) && git -C /x commit"), [
+    ["rev-parse", [], ["HEAD"]],
+    ["commit", ["/x"], []],
+  ]);
+  // An unexpanded -C is dropped, as an unexpanded cd is.
+  assert.deepEqual(shape('git -C "$PRIMARY" commit'), [["commit", [], []]]);
+  // Not git.
+  assert.deepEqual(gitInvocations("digit commit"), []);
+  assert.deepEqual(gitInvocations("git-lfs pull"), []);
+  assert.deepEqual(gitInvocations("git"), []);
 });
 
 // --- 1. pkill / killall ------------------------------------------------------
@@ -154,6 +194,76 @@ test("catches a literal cd back into the primary checkout", () => {
 
 test("an unexpanded cd target is not guessed at", () => {
   allowed(WORKTREE, 'cd "$PRIMARY" && git commit -m x');
+});
+
+test("the last literal cd wins, as in a shell", () => {
+  // The guard used to block if ANY directory in the chain was the primary,
+  // so a session standing in the primary checkout could not follow the
+  // guard's own advice: cut a worktree, cd into it, commit there.
+  allowed(PRIMARY, `cd "${WORKTREE}" && git commit -m x`);
+  allowed(PRIMARY, `cd "${WORKTREE}" && git add -A && git commit -m x`);
+  allowed(PRIMARY, `cd "${WORKTREE}" && ffmpeg -i a.png b.mp4`);
+  allowed(PRIMARY, `cd "${WORKTREE}" && codex exec "write a poster"`);
+  blocked(PRIMARY, `cd "${WORKTREE}" && cd "${PRIMARY}" && git commit -m x`);
+  blocked(WORKTREE, `cd "${WORKTREE}" && cd "${PRIMARY}" && git commit -m x`);
+  blocked(PRIMARY, "git commit -m x");
+  blocked(PRIMARY, "git add -A");
+});
+
+test("a relative cd resolves from wherever the previous cd left off", () => {
+  allowed(PRIMARY, "cd .claude/worktrees/feat-x && git commit -m x");
+  allowed(PRIMARY, "cd .claude && cd worktrees/feat-x && git commit -m x");
+  blocked(WORKTREE, "cd ../../.. && git commit -m x");
+  blocked(WORKTREE, "cd .. && cd ../.. && git commit -m x");
+});
+
+test("a cd after the command is not where the command ran", () => {
+  allowed(PRIMARY, `cd "${WORKTREE}" && git commit -m x && cd "${PRIMARY}" && git status`);
+  blocked(WORKTREE, `cd "${PRIMARY}" && git commit -m x && cd "${WORKTREE}"`);
+});
+
+test("git -C names where a git command runs", () => {
+  allowed(PRIMARY, `git -C "${WORKTREE}" commit -m x`);
+  allowed(PRIMARY, `git -C "${WORKTREE}" add -A && git -C "${WORKTREE}" commit -m x`);
+  allowed(PRIMARY, "git -C .claude/worktrees/feat-x commit -m x");
+  allowed(PRIMARY, "git -C .claude -C worktrees/feat-x commit -m x");
+  allowed(PRIMARY, `git -C "${WORKTREE}" --no-pager commit -m x`);
+  blocked(WORKTREE, `git -C "${PRIMARY}" commit -m x`);
+  blocked(WORKTREE, "git -C ../../.. commit -m x");
+  for (const verb of ["add -A", "merge origin/main", "rebase origin/main", "cherry-pick abc123", "apply x.diff"]) {
+    blocked(WORKTREE, `git -C "${PRIMARY}" ${verb}`);
+  }
+});
+
+test("git -C is taken from wherever the last cd left the shell", () => {
+  blocked(PRIMARY, `cd "${WORKTREE}" && git -C "${PRIMARY}" commit -m x`);
+  allowed(WORKTREE, `cd "${PRIMARY}" && git -C "${WORKTREE}" commit -m x`);
+  allowed(WORKTREE, `cd "${PRIMARY}" && git -C .claude/worktrees/feat-x commit -m x`);
+});
+
+test("an unexpanded git -C target is not guessed at, like cd", () => {
+  allowed(WORKTREE, 'git -C "$PRIMARY" commit -m x');
+});
+
+test("global git options between git and the verb do not hide it", () => {
+  blocked(PRIMARY, "git -c user.name=x commit -m x");
+  blocked(PRIMARY, "git --no-pager commit -m x");
+  blocked(PRIMARY, "git -C . -c core.editor=true commit -m x");
+});
+
+test("git -C into the primary checkout to read, or to cut a worktree, is fine", () => {
+  // git-new.sh does exactly this from inside a worktree.
+  for (const c of [
+    `git -C "${PRIMARY}" status`,
+    `git -C "${PRIMARY}" log --oneline -5`,
+    `git -C "${PRIMARY}" fetch --quiet origin`,
+    `git -C "${PRIMARY}" worktree add --quiet -b feat/y /some/path origin/main`,
+    `git -C "${PRIMARY}" merge --abort`,
+    `git -C "${PRIMARY}" merge-base --is-ancestor a b`,
+    `git -C "${PRIMARY}" commit-tree abc123 -p def456 -m x`,
+  ]) {
+    allowed(WORKTREE, c);
+  }
 });
 
 test("reading in the primary checkout is the whole point of the primary checkout", () => {
