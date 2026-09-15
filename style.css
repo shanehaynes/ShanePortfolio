@@ -97,6 +97,7 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
 .ph figcaption span:first-child{color:var(--ink);opacity:.85;}
 
 /* evidence: the work panel */
+.ph+.pnl{margin-top:28px;}
 .pnl{border-top:1px solid var(--rule);margin-right:var(--inset);}
 .pnl>div{display:grid;grid-template-columns:8ch 1fr;gap:20px;padding:13px 0;border-bottom:1px solid var(--rule-soft);align-items:baseline;}
 .pnl .y{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--ink-dim);font-variant-numeric:tabular-nums;white-space:nowrap;}
@@ -104,6 +105,23 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
 .pnl .r small{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);margin-top:.3em;}
 .pnl .r a{border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color .2s,border-color .2s;}
 .pnl .r a:hover,.pnl .r a:focus-visible{color:var(--signal);border-color:var(--signal);}
+
+/* evidence: a still behind a row, shown while the pointer or focus is on it */
+.pnl>div{position:relative;}
+.pnl>div.has{outline:none;cursor:default;}
+.pnl>div.has:hover .y,.pnl>div.has:focus-visible .y{color:var(--signal);}
+.pnl .still{position:absolute;right:0;top:calc(100% + 6px);width:clamp(160px,18vw,220px);margin:0;z-index:2;
+  background:var(--ground);padding-bottom:8px;opacity:0;pointer-events:none;transition:opacity .15s;}
+.pnl .still img{display:block;width:100%;height:auto;background:#151a21;}
+.pnl .still figcaption{margin-top:7px;display:flex;flex-direction:column;gap:.25em;}
+.pnl .still figcaption span:first-child{color:var(--ink);opacity:.85;}
+.pnl>div.has:hover .still,.pnl>div.has:focus-visible .still{opacity:1;}
+@media (hover:none){
+  .pnl>div.has{grid-template-columns:8ch 1fr auto;}
+  .pnl .still{position:static;width:auto;padding:0;opacity:1;transition:none;align-self:center;}
+  .pnl .still img{width:48px;height:48px;object-fit:cover;}
+  .pnl .still figcaption{display:none;}
+}
 
 /* evidence: the books */
 .bk img{display:block;width:100%;height:auto;aspect-ratio:auto;background:#151a21;}
@@ -168,6 +186,7 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
   .id{max-width:82vw;}
   .index{gap:1.1em;}
   .pnl>div,.es a{grid-template-columns:6ch 1fr;gap:14px;}
+  .pnl>div.has{grid-template-columns:6ch 1fr;}
   .rec .pnl>div{grid-template-columns:1fr;gap:3px;}
 }
 
@@ -176,5 +195,8 @@ h1,h2,h3,p,ul,ol,figure{margin:0;}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
   .hero video{display:none;}
-  .index,.lnk,.index a,.es a{transition:none;}
+  .index,.lnk,.index a,.es a,.pnl .still{transition:none;}
+}
+@media (max-width:639px) and (hover:none){
+  .pnl>div.has{grid-template-columns:6ch 1fr auto;}
 }
