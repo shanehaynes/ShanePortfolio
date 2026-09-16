@@ -44,3 +44,10 @@ If these conversations interest you, I'm always open to continuing them.
 - Zion: Cowboy Ridge, Mount Kinesava · 37.20°N 113.03°W · 2100 M — Jordan on the 5.7 hand crack, about 2,000 ft above the canyon floor.
 - Wasatch: Heaven's Half Pipe, Lone Peak · 40.52°N 111.75°W · 3350 M — Jordan skiing deep snow in a whiteout.
 - Stansbury: Twin Couloirs, Deseret Peak · 40.46°N 112.62°W · 3000 M — Cooper setting the boot pack.
+
+## Photographs of Shane (added 2026-09-16; originals from the Drive folder "Portfolio Page")
+- `images/redRock.jpeg` → `media/redrock-{1600,2400}.{jpg,avif}` (3:2 crop; the page shows a 2:1 band on desktop). iPhone 15 Pro, 2025-11-29. Shane with a climbing partner on a ledge above a canyon at Red Rock Canyon, Nevada. **Caption is a placeholder Shane chose to ship with**: "Red Rock Canyon, Nevada · 36.13°N 115.45°W · 1400 M" are approximate area coordinates, not the photo's; the route, the formation and the partner's name are not yet recorded. Second line "Me, on the ledge". Replace all of it when Shane supplies the facts.
+- `images/yalePortrait.png` → `media/yale-{480,800}.{jpg,avif}` (4:5) and `media/yale-card.jpg` (1200×630, the `og:image`). Studio headshot, PNG with no camera metadata, taken by a photographer; date and place unconfirmed. Caption "New Haven · 41.31°N 72.93°W · 20 M" is the site's New Haven readout, not the photo's own location.
+- `images/utahGrad.jpeg` → `media/utah-{600,1200}.{jpg,avif}` (3:2). iPhone 11, 2024-05-03 12:35, the second frame of the graduation squat in `images/MeGradPhoto.jpeg`. Caption "University of Utah · 40.76°N 111.85°W · 1480 M": the coordinates come from the photo's own GPS before it was stripped (the campus fountain); the elevation is the campus's approximate height, unconfirmed.
+- The three JPEG originals had their GPS IFD removed before commit (`piexif`, APP1 segment rewritten, pixels byte-identical); every `media/` encode carries no EXIF at all.
+- Not committed: the fourth upload, a pub photo from 2024-12-27, encoded and reviewed, then dropped by Shane's choice.
