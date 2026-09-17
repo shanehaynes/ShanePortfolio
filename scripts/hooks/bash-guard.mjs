@@ -358,12 +358,12 @@ export function decide(input) {
   // The only rule in CLAUDE.md whose violation is unrecoverable: these are
   // Shane's own photographs of real people in real places, and an image_gen
   // pass over one replaces a photograph with a picture of nothing.
-  if (/\bcodex\b[^\n]*\bimage_gen\b/.test(command) || /\bimage_gen\b[^\n]*\b(books|zion|wasatch|stansbury)\b/.test(command)) {
-    if (/\b(books|zion|wasatch|stansbury)\b/.test(command) || /\bimages\//.test(command)) {
+  if (/\bcodex\b[^\n]*\bimage_gen\b/.test(command) || /\bimage_gen\b[^\n]*\b(books|zion|wasatch|stansbury|redrock|yale|utah)\b/.test(command)) {
+    if (/\b(books|zion|wasatch|stansbury|redrock|yale|utah)\b/.test(command) || /\bimages\//.test(command)) {
       return [
         `Blocked: image_gen against a photograph.`,
-        `Everything in images/, and the books, zion, wasatch and stansbury stills`,
-        `derived from them in media/, are Shane's own photographs of real people in`,
+        `Everything in images/, and the books, zion, wasatch, stansbury, redrock, yale`,
+        `and utah stills derived from them in media/, are Shane's own photographs of real people in`,
         `real places. Regenerating, extending or retouching one replaces a photograph`,
         `with something that only looks like it, and the original framing is gone.`,
         ``,

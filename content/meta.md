@@ -31,13 +31,20 @@ has just been handed the link, which is usually a recruiter or a classmate.
 Carries the index.html string verbatim. The file is a redirect to `/#mountains`, not
 a destination, so it should preview as the page it forwards to.
 
+## og:image  (all pages, since 2026-09-16)
+
+    https://shanehaynes.com/media/yale-card.jpg   1200 x 630
+
+A 1.91:1 band cut from the studio headshot (`images/yalePortrait.png`), eyes in the upper
+third. Replaces the hero poster, which had no person in it. The poster's frame stays the
+`<video poster>` and the hero background; only the preview card changed.
+
 ## og:image:alt  (all pages)
 
-    Granite spires above a still alpine lake at first light.
+    Shane Haynes, in a dark suit and navy tie, looking straight at the camera.
 
-Describes what is depicted without asserting it is a photograph of a real place. The
-hero is generated, and the readout's "After Titcomb Basin" is meant in the
-art-historical sense.
+The previous alt, "Granite spires above a still alpine lake at first light.", described
+the generated hero without asserting it was a photograph; it is kept here for the record.
 
 ## og:title
 
@@ -48,10 +55,10 @@ distinguishing detail.
 
 ## Known limit
 
-The hero poster has no person in it, X strips descriptions from large-image cards, and
-iMessage usually renders none. **Slack is the only surface where the full description
-lands.** On X the card is a mountain, a name and a domain; no meta tag changes that.
-If X ever becomes a channel worth serving, the answer is a second image, not more tags.
+X strips descriptions from large-image cards, and iMessage usually renders none.
+**Slack is the only surface where the full description lands.** Since 2026-09-16 the card
+is a face, a name and a domain rather than a mountain, which is what those surfaces can
+carry; the description still only lands on Slack.
 
 ## Off-site copy, kept here so it stays consistent
 

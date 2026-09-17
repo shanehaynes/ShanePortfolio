@@ -352,6 +352,8 @@ test("blocks image_gen aimed at a photograph", () => {
   const m = blocked(WORKTREE, 'codex exec "use image_gen to extend images/books.jpeg"');
   assert.match(m, /re-encode/i);
   blocked(WORKTREE, 'codex exec "image_gen: retouch the zion still"');
+  blocked(WORKTREE, 'codex exec "image_gen: take the sunglasses off the redrock still"');
+  blocked(WORKTREE, 'codex exec "image_gen: sharpen media/yale-800.jpg"');
 });
 
 test("does not block the generated hero, nor plain re-encodes", () => {
