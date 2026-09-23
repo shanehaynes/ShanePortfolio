@@ -34,6 +34,7 @@ who cannot trace a sentence to one of the three files does not write it.
 - On every page `meta name="description"` and `og:description` are byte-identical; `meta.md` is their source.
 
 ## Decisions (dated)
+- 2026-09-23: the photo above the Work timeline is work-related: Shane at the Yale SOM sign replaces the Red Rock selfie (his reasons: work-related, and recent). The Yale row's hover headshot is unchanged for now.
 - 2026-09-16: the mapping of Shane's four uploads is as built: Red Rock selfie above the Work timeline, studio headshot on the Yale row and as the preview card, graduation frame on the Utah row, pub photo unused and not committed. Caption voice "Me, …". Red Rock facts left as placeholder by Shane's choice, flagged in personal.md. Colophon reworded: "mine" became "real", so the line no longer claims authorship of the headshot.
 - 2026-09-14: photographs of Shane join the page without a new section. One always-visible photo sits above the Work timeline (Work's evidence column now rhymes with Philosophy's: a photo, then a mono list). The Yale and Utah rows carry a still shown on hover or keyboard focus; on touch devices it is a small square in the row. The portrait becomes `og:image` on all three pages. Shane's idea for the hover stills; the always-visible photo exists so phones, screen readers and crawlers get a face.
 - 2026-09-13: the hero carries the name and tagline only. The "I build production AI systems. Yale MBA, class of 2028." line was added and then removed the same day.
